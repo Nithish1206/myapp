@@ -8,18 +8,23 @@ import clinicalLogo from "../Assests/Frame6.png";
 import reportLogo from "../Assests/Frame7.png";
 import messageLogo from "../Assests/Frame8b.png";
 import exitLogo from "../Assests/Frame9.png";
-import "./sidebar.css";
+import "./CSS/sidebar.css";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   return (
     <div className="sideLogoBar">
       <div className="d-flex flex-column h-75 justify-content-start gap-5 mt-3">
-        <img src={logo} alt="logo" />
+        <Link to="/Login">
+          <img src={logo} alt="logo" />
+        </Link>
         <button>
           <img src={HomeLogo} alt="Home Logo" />
         </button>
         <button>
-          <img src={dashboardLogo} alt="dashboard Logo" />
+          <Link to="/Dashboard">
+            <img src={dashboardLogo} alt="dashboard Logo" />
+          </Link>
         </button>
         <button>
           <img src={patientLogo} alt="Patient Logo" />

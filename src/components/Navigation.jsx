@@ -2,14 +2,16 @@ import React from "react";
 import bell from "../Assests/bell.png";
 import profilePic from "../Assests/doc.jpg";
 import { Dropdown } from "react-bootstrap";
-import "./Navigation.css";
+import "./CSS/Navigation.css";
+import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({ User }) => {
   const profile = {
     Pic: profilePic,
     name: "Jessica",
     Role: "Admin",
   };
+  console.log(User);
   return (
     <div className="w-100 d-flex justify-content-end p-0 m-0 pe-5 pt-4">
       <div className="navDiv d-flex justify-content-end p-2">
@@ -23,11 +25,11 @@ const Navigation = () => {
               <img src={profile.Pic} alt="profile" width={40} />
               <div className="nameRole">
                 <p className="d-block p-0 m-0 fw-semibold">{profile.name}</p>
-                <p className="d-block p-0 m-0 text-muted">{profile.Role}</p>
+                <p className="d-block p-0 m-0 text-secondary">{profile.Role}</p>
               </div>
             </Dropdown.Toggle>
             <Dropdown.Menu className="mt-3 p-0 rounded-4">
-              <Dropdown.Item className="d-flex align-items-center gap-2 p-3 rounded-top-4">
+              <Dropdown.Item as={Link} to="/Profile" className="d-flex align-items-center gap-2 p-3 rounded-top-4">
                 <span className="solar--user-broken"></span>profile
               </Dropdown.Item>
               <Dropdown.Item className="d-flex align-items-center gap-2 p-3 ">
