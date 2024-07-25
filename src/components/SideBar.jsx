@@ -14,33 +14,31 @@ import { Link } from "react-router-dom";
 const SideBar = () => {
   return (
     <div className="sideLogoBar">
-      <div className="d-flex flex-column h-75 justify-content-start gap-5 mt-3">
+      <div className="d-flex flex-column h-75 justify-content-start align-items-center gap-5 mt-3">
         <Link to="/Login">
           <img src={logo} alt="logo" />
         </Link>
-        <button>
+        <Link to="/">
           <img src={HomeLogo} alt="Home Logo" />
-        </button>
-        <button>
-          <Link to="/Dashboard">
-            <img src={dashboardLogo} alt="dashboard Logo" />
-          </Link>
-        </button>
-        <button>
+        </Link>
+        <Link to="/Dashboard">
+          <img src={dashboardLogo} alt="dashboard Logo" />
+        </Link>
+        <Link to="/PatientList">
           <img src={patientLogo} alt="Patient Logo" />
-        </button>
-        <button>
+        </Link>
+        <Link>
           <img src={providersLogo} alt="Providers logo" />
-        </button>
-        <button>
+        </Link>
+        <Link>
           <img src={clinicalLogo} alt="Clinical logo" />
-        </button>
-        <button>
+        </Link>
+        <Link>
           <img src={reportLogo} alt="report logo" />
-        </button>
-        <button>
+        </Link>
+        <Link>
           <img src={messageLogo} alt="Message Logo" />
-        </button>
+        </Link>
       </div>
       <div className="pb-5">
         <button>

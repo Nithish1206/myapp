@@ -1,0 +1,15 @@
+.iconamoon--arrow-right-2 {
+  display: flex;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23737373' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m10 17l5-5m0 0l-5-5'/%3E%3C/svg%3E");
+}
+.patient-demo {
+  color: #57c9d3;
+  border-bottom: 4px solid #57c9d3;
+}
+.patient-issue {
+  border-bottom: 1px solid rgb(230, 230, 230);
+}

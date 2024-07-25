@@ -1,0 +1,18 @@
+.search-input {
+  background-color: #f9f9fa;
+  box-shadow: none;
+  outline: none;
+  padding: 5px;
+}
+.icon-input {
+  background-color: #f9f9fa;
+  display: flex;
+  align-items: center;
+}
+.plus-icon {
+  color: white;
+  background-color: #57c9d3;
+}
+.search-icon {
+  color: #737373;
+}

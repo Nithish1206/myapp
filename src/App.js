@@ -8,6 +8,8 @@ import { Row, Col } from "react-bootstrap";
 import SideBar from "./components/SideBar";
 import Navigation from "./components/Navigation";
 import Login from "./components/Login";
+import PatientList from "./components/PatientList";
+import AddPatient from "./components/AddPatient";
 
 function App() {
   return (
@@ -43,6 +45,8 @@ const AppRouter = () => {
         <Routes>
           <Route path="/" />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/PatientList" element={<PatientList />} />
+          <Route path="/PatientList/AddPatient" element={<AddPatient />} />
           <Route path="/Profile" element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />} />
         </Routes>
       </Col>
