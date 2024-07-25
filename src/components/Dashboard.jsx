@@ -5,8 +5,6 @@ import PE from "../Assests/Frame 20.png";
 import PIT from "../Assests/Frame 22.png";
 import RP from "../Assests/Frame 21.png";
 import "./CSS/Dashboard.css";
-import SideBar from "./SideBar";
-import Navigation from "./Navigation";
 
 const Dashboard = () => {
   const box1 = { title: "Patients Enrolled", count: 120, img: PE };
@@ -29,25 +27,17 @@ const Dashboard = () => {
     );
   }
   return (
-    <Row className="vh-100 m-0 p-0">
-      <Col xs={1} className="col1 p-0 m-0 w-auto">
-        <SideBar />
-      </Col>
-      <Col className="p-0 m-0">
-        <Navigation />
-        <div className="ms-5 m-0 p-0">
-          <Row className="w-100">
-            <h2 className="w-100 mt-3">Dashboard</h2>
-          </Row>
-          <Row className="gap-5 mt-4 w-100">
-            {box(box1)}
-            {box(box2)}
-            {box(box3)}
-            <Col></Col>
-          </Row>
-        </div>
-      </Col>
-    </Row>
+    <div className="ms-5 m-0 p-0">
+      <Row className="w-100">
+        <h2 className="w-100 mt-3">Dashboard</h2>
+      </Row>
+      <Row className="gap-5 mt-4 w-100">
+        {box(box1)}
+        {box(box2)}
+        {box(box3)}
+        <Col></Col>
+      </Row>
+    </div>
   );
 };
 

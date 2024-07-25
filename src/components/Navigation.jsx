@@ -5,13 +5,12 @@ import { Dropdown } from "react-bootstrap";
 import "./CSS/Navigation.css";
 import { Link } from "react-router-dom";
 
-const Navigation = ({ User }) => {
+const Navigation = ({ name }) => {
   const profile = {
     Pic: profilePic,
-    name: "Jessica",
+    name: name,
     Role: "Admin",
   };
-  console.log(User);
   return (
     <div className="w-100 d-flex justify-content-end p-0 m-0 pe-5 pt-4">
       <div className="navDiv d-flex justify-content-end p-2">
