@@ -1,27 +1,25 @@
 import React, { useState } from "react";
 import "./CSS/Profile.css";
-import { Row, Col, DropdownButton } from "react-bootstrap";
-import { Dropdown } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+
 import profilePic from "../Assests/doc.jpg";
 
 const Profile = ({ User, setUser, details, setDetails }) => {
   const [edit, setEdit] = useState(true);
   ///Handle Status
-  const [status, setStatus] = useState(["Active", "#5BB552", "#E4F1E7"]);
-  const handleStatusActive = (e) => {
-    setStatus([e, "#5BB552", "#E4F1E7"]);
-  };
-  const handleStatusInactive = (e) => {
-    setStatus([e, "#b55252", "#f1e4e4"]);
+  const [status, setStatus] = useState("Active");
+  const handleStatus = (e) => {
+    console.log(e.target.value);
+    setStatus(e.target.value);
   };
 
   ////inputFeild
   const inputFeild = (datas) => {
-    const outlist = datas.map((data) => (
-      <Col lg={4} key={data.lable} className="p-0 m-0">
-        <div className="m-auto pe-3">
-          <label className="d-flex pb-2">{data.lable}</label>
-          <input type={data.type} value={data.value} onChange={(e) => handleChange(data, e.target.value)} disabled={edit} className="p-2 w-100 text-secondary" />
+    const outlist = datas.map((data, index) => (
+      <Col lg={4} key={index} className="p-0 m-0">
+        <div className="m-auto pe-3 pb-3">
+          <label className="d-flex py-2 fw-semibold">{data.label}</label>
+          <input type={data.type} value={data.value} onChange={(e) => handleChange(e.target.value, index)} disabled={edit} className="p-2 w-100 text-secondary" />
         </div>
       </Col>
     ));
@@ -29,13 +27,13 @@ const Profile = ({ User, setUser, details, setDetails }) => {
   };
 
   ///Handle Change
-  const handleChange = (data, Currentvalues) => {
-    const updateValue = details.map((detail) => (detail.lable === data.lable ? { ...detail, value: Currentvalues } : detail));
+  const handleChange = (Currentvalues, index) => {
+    const updateValue = [...details];
+    updateValue[index].value = Currentvalues;
     setDetails(updateValue);
   };
-
   const handleClick = () => {
-    setUser([details.filter((d) => d.lable === "First Name")[0].value, details.filter((d) => d.lable === "Email Address")[0].value]);
+    setUser([details[0].value, details[2].value]);
     setEdit(!edit);
   };
   const userName = User[0];
@@ -58,9 +56,7 @@ const Profile = ({ User, setUser, details, setDetails }) => {
             </div>
           </div>
           <div className="d-flex align-items-center pe-3">
-            <p className="m-0 p-0 p-2 rounded-3" style={{ color: status[1], backgroundColor: status[2] }}>
-              {status[0]}
-            </p>
+            <p className={`p-2 rounded-3 ${status === "Active" ? "ActiveStatus" : "InActiveStatus"}`}>{status}</p>
           </div>
         </div>
       </Row>
@@ -80,21 +76,14 @@ const Profile = ({ User, setUser, details, setDetails }) => {
         <Row className="m-0 p-0 d-flex justify-content-start mt-3 ">
           {inputFeild(details)}
           <Col lg={4} className="p-0 m-0 d-flex align-items-end">
-            <div>
-              <DropdownButton variant="success" title="Status" disabled={edit}>
-                <Dropdown.Item
-                  onClick={(e) => {
-                    handleStatusActive(e.target.innerHTML);
-                  }}>
-                  Active
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={(e) => {
-                    handleStatusInactive(e.target.innerHTML);
-                  }}>
-                  InActive
-                </Dropdown.Item>
-              </DropdownButton>
+            <div className="pe-3 pb-3">
+              <label htmlFor="status" className="d-block fw-semibold py-2">
+                Status
+              </label>
+              <select id="status" className="p-2 px-3" disabled={edit} onChange={handleStatus}>
+                <option value="Active">Active</option>
+                <option value="InActive">InActive</option>
+              </select>
             </div>
           </Col>
         </Row>

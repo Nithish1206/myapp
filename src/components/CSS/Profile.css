@@ -1,3 +1,11 @@
 .profileTop {
   background-color: #f7fafcff;
 }
+.ActiveStatus {
+  color: #5bb552;
+  background-color: #e4f1e7;
+}
+.InActiveStatus {
+  color: #b55252;
+  background-color: #f1e4e4;
+}

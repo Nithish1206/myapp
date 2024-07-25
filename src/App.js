@@ -7,39 +7,47 @@ import Profile from "./components/Profile";
 import { Row, Col } from "react-bootstrap";
 import SideBar from "./components/SideBar";
 import Navigation from "./components/Navigation";
+import Login from "./components/Login";
 
 function App() {
-  const [details, setDetails] = useState([
-    { lable: "First Name", value: "Jessica", type: "text" },
-    { lable: "Last Name", value: "Mark", type: "text" },
-    { lable: "Email Address", value: "jessica@gmail.com", type: "email" },
-    { lable: "Gender", value: "Female", type: "text" },
-    { lable: "DOB", value: "2003-06-12", type: "date" },
-    { lable: "Phone Number", value: "+1 (201) 874 8486", type: "text" },
-    { lable: "Address", value: "1027 Edgardo", type: "text" },
-    { lable: "City", value: "Aelington", type: "text" },
-    { lable: "State", value: "virginia", type: "text" },
-    { lable: "postal Code", value: "22201", type: "text" },
-  ]);
-  const [User, setUser] = useState([details.filter((d) => d.lable === "First Name")[0].value, details.filter((d) => d.lable === "Email Address")[0].value]);
-
   return (
     <BrowserRouter>
-      <Row className="vh-100 m-0 p-0">
-        <Col xs={1} className="col1 p-0 m-0 w-auto">
-          <SideBar />
-        </Col>
-        <Col className="p-0 m-0">
-          <Navigation name={User[0]} />
-          <Routes>
-            <Route path="/" />
-            <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/Profile" element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />} />
-          </Routes>
-        </Col>
-      </Row>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<AppRouter />} />
+      </Routes>
     </BrowserRouter>
   );
 }
+const AppRouter = () => {
+  const [details, setDetails] = useState([
+    { label: "First Name", value: "Jessica", type: "text" },
+    { label: "Last Name", value: "Mark", type: "text" },
+    { label: "Email Address", value: "jessica@gmail.com", type: "email" },
+    { label: "Gender", value: "Female", type: "text" },
+    { label: "DOB", value: "2003-06-12", type: "date" },
+    { label: "Phone Number", value: "+1 (201) 874 8486", type: "text" },
+    { label: "Address", value: "1027 Edgardo", type: "text" },
+    { label: "City", value: "Aelington", type: "text" },
+    { label: "State", value: "virginia", type: "text" },
+    { label: "Postal Code", value: "22201", type: "text" },
+  ]);
+  const [User, setUser] = useState([details[0].value, details[2].value]);
+  return (
+    <Row className="vh-100 m-0 p-0">
+      <Col xs={1} className="col1 p-0 m-0 w-auto">
+        <SideBar />
+      </Col>
+      <Col className="p-0 m-0">
+        <Navigation name={User[0]} />
+        <Routes>
+          <Route path="/" />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Profile" element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />} />
+        </Routes>
+      </Col>
+    </Row>
+  );
+};
 
 export default App;
