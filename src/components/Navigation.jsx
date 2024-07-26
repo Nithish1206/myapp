@@ -14,13 +14,13 @@ const Navigation = ({ name }) => {
   return (
     <div className="w-100 d-flex justify-content-end p-0 m-0 pe-5 pt-4">
       <div className="navDiv d-flex justify-content-end p-2">
-        <button className="btn btn-no-border">
+        <button className="btn border-0">
           <img src={bell} alt="" />
         </button>
         <div className="vr"></div>
         <div className="d-flex align-items-center p-0 m-0">
           <Dropdown className="p-0 m-0">
-            <Dropdown.Toggle variant="none" className="profileBtn d-flex gap-3 p-0 px-1 m-0 align-items-center">
+            <Dropdown.Toggle variant="none" className="profileBtn d-flex gap-3 p-0 px-1 m-0 align-items-center border border-0">
               <img src={profile.Pic} alt="profile" width={40} />
               <div className="nameRole">
                 <p className="d-block p-0 m-0 fw-semibold">{profile.name}</p>

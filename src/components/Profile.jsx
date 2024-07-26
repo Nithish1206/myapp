@@ -7,9 +7,9 @@ import profilePic from "../Assests/doc.jpg";
 const Profile = ({ User, setUser, details, setDetails }) => {
   const [edit, setEdit] = useState(true);
   ///Handle Status
+
   const [status, setStatus] = useState("Active");
   const handleStatus = (e) => {
-    console.log(e.target.value);
     setStatus(e.target.value);
   };
 
@@ -19,7 +19,7 @@ const Profile = ({ User, setUser, details, setDetails }) => {
       <Col lg={4} key={index} className="p-0 m-0">
         <div className="m-auto pe-3 pb-3">
           <label className="d-flex py-2 fw-semibold">{data.label}</label>
-          <input type={data.type} value={data.value} onChange={(e) => handleChange(e.target.value, index)} disabled={edit} className="p-2 w-100 text-secondary" />
+          <input type={data.type} value={data.value} onChange={(e) => handleChange(e.target.value, index)} disabled={edit} className="form-control shadow-none p-2 w-100 text-secondary" />
         </div>
       </Col>
     ));
@@ -80,7 +80,7 @@ const Profile = ({ User, setUser, details, setDetails }) => {
               <label htmlFor="status" className="d-block fw-semibold py-2">
                 Status
               </label>
-              <select id="status" className="p-2 px-3" disabled={edit} onChange={handleStatus}>
+              <select id="status" className="form-select" disabled={edit} onChange={handleStatus}>
                 <option value="Active">Active</option>
                 <option value="InActive">InActive</option>
               </select>

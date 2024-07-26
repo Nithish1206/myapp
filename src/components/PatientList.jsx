@@ -1,38 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CSS/PatientList.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 const PatientList = () => {
-  const [patient, setPatient] = useState([
-    {
-      id: 1,
-      name: "John",
-      email: "hariprakash99@gmail.com",
-      phone: "9942625852",
-      issueType: "Depression",
-      period: "72",
-      onboardDate: "12/06/2024",
-      training: "Enrolled",
-      assignedTo: "Bruce Wayne",
-      score: "8/10",
-    },
-    {
-      id: 2,
-      name: "hariprakash",
-      email: "hariprakash99@gmail.com",
-      phone: "9942625852",
-      issueType: "Depression",
-      period: "72",
-      onboardDate: "12/06/2024",
-      training: "Enrolled",
-      assignedTo: "Bruce Wayne",
-      score: "8/10",
-    },
-  ]);
+  const navigate = useNavigate();
+  const patient = JSON.parse(localStorage.getItem("PatientData"));
   const PatientDetails = () => {
     const List = patient.map((list, index) => (
-      <tr key={index}>
+      <tr key={index} onClick={() => handleClick(list.id)}>
         <td>{list.id}</td>
         <td>{list.name}</td>
         <td>{list.email}</td>
@@ -44,14 +20,18 @@ const PatientList = () => {
         <td>{list.assignedTo}</td>
         <td>{list.score}</td>
         <td className="d-flex justify-content-evenly">
-          <button className="me-2 p-1">edit</button>
-          <button className="p-1">Delete</button>
+          <span className="bxs--edit"></span>
+          <span className="material-symbols--delete-outline"></span>
         </td>
       </tr>
     ));
     return List;
   };
-  ////Add Patient
+  ///handleClick
+  const handleClick = (id) => {
+    console.log("clicked");
+    navigate(`/PatientList/PatientProfile/${id}`);
+  };
 
   return (
     <div className="m-5">
@@ -69,7 +49,7 @@ const PatientList = () => {
         </div>
       </header>
       <div>
-        <table className="table table-striped table-bordered">
+        <table className="table table-hover table-bordered mt-4">
           <thead>
             <tr>
               <th scope="col">Patient ID</th>

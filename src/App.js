@@ -10,6 +10,8 @@ import Navigation from "./components/Navigation";
 import Login from "./components/Login";
 import PatientList from "./components/PatientList";
 import AddPatient from "./components/AddPatient";
+import PatientProfile from "./components/PatientProfile";
+// import PatientData from "./components/PatientData";
 
 function App() {
   return (
@@ -35,6 +37,7 @@ const AppRouter = () => {
     { label: "Postal Code", value: "22201", type: "text" },
   ]);
   const [User, setUser] = useState([details[0].value, details[2].value]);
+  // <PatientData />
   return (
     <Row className="vh-100 m-0 p-0">
       <Col xs={1} className="col1 p-0 m-0 w-auto">
@@ -43,9 +46,9 @@ const AppRouter = () => {
       <Col className="p-0 m-0">
         <Navigation name={User[0]} />
         <Routes>
-          <Route path="/" />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/PatientList" element={<PatientList />} />
+          <Route path="PatientList/PatientProfile/:id" element={<PatientProfile />} />
           <Route path="/PatientList/AddPatient" element={<AddPatient />} />
           <Route path="/Profile" element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />} />
         </Routes>

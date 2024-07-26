@@ -13,3 +13,9 @@
 .patient-issue {
   border-bottom: 1px solid rgb(230, 230, 230);
 }
+.cancelbtn {
+  background-color: #e8eefe;
+}
+.nextbtn {
+  background-color: #57c9d3;
+}
