@@ -1,14 +1,14 @@
 import React from "react";
-import "./CSS/PatientList.css";
+import "../CSS/PatientList.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 const PatientList = () => {
   const navigate = useNavigate();
-  const patient = JSON.parse(localStorage.getItem("PatientData"));
+  const patient = JSON.parse(sessionStorage.getItem("PatientData"));
   const PatientDetails = () => {
     const List = patient.map((list, index) => (
-      <tr key={index} onClick={() => handleClick(list.id)}>
+      <tr key={index} onClick={() => handleClick(list.id)} className="on-hover">
         <td>{list.id}</td>
         <td>{list.name}</td>
         <td>{list.email}</td>

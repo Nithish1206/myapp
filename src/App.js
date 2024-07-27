@@ -8,10 +8,10 @@ import { Row, Col } from "react-bootstrap";
 import SideBar from "./components/SideBar";
 import Navigation from "./components/Navigation";
 import Login from "./components/Login";
-import PatientList from "./components/PatientList";
-import AddPatient from "./components/AddPatient";
-import PatientProfile from "./components/PatientProfile";
-// import PatientData from "./components/PatientData";
+import PatientList from "./components/Patient/PatientList";
+import AddPatient from "./components/Patient/AddPatient";
+import PatientProfile from "./components/Patient/PatientProfile";
+import PatientData from "./components/Patient/PatientData";
 
 function App() {
   return (
@@ -37,7 +37,7 @@ const AppRouter = () => {
     { label: "Postal Code", value: "22201", type: "text" },
   ]);
   const [User, setUser] = useState([details[0].value, details[2].value]);
-  // <PatientData />
+  <PatientData />;
   return (
     <Row className="vh-100 m-0 p-0">
       <Col xs={1} className="col1 p-0 m-0 w-auto">
