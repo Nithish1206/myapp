@@ -9,11 +9,19 @@ import SideBar from "./components/SideBar";
 import Navigation from "./components/Navigation";
 import Login from "./components/Login";
 import PatientList from "./components/Patient/PatientList";
-import AddPatient from "./components/Patient/AddPatient";
+import AddPatient from "./components/Patient/AddPatient/AddPatient";
 import PatientProfile from "./components/Patient/PatientProfile";
-import PatientData from "./components/Patient/PatientData";
+import Records from "./components/Patient/Records.json";
+import EditPatientDetail from "./components/Patient/EditPatient/EditPatientDetail";
 
 function App() {
+  const storedData = JSON.parse(localStorage.getItem("PatientData"));
+  if (!storedData) {
+    console.log("Session Stroage initial Update...");
+    localStorage.setItem("PatientData", JSON.stringify(Records));
+    console.log("local storage updated");
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -37,7 +45,6 @@ const AppRouter = () => {
     { label: "Postal Code", value: "22201", type: "text" },
   ]);
   const [User, setUser] = useState([details[0].value, details[2].value]);
-  <PatientData />;
   return (
     <Row className="vh-100 m-0 p-0">
       <Col xs={1} className="col1 p-0 m-0 w-auto">
@@ -50,6 +57,7 @@ const AppRouter = () => {
           <Route path="/PatientList" element={<PatientList />} />
           <Route path="PatientList/PatientProfile/:id" element={<PatientProfile />} />
           <Route path="/PatientList/AddPatient" element={<AddPatient />} />
+          <Route path="/PatientList/EditProfile/:id" element={<EditPatientDetail />} />
           <Route path="/Profile" element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />} />
         </Routes>
       </Col>

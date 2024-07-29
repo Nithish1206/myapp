@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const SideBar = () => {
   return (
-    <div className="sideLogoBar">
+    <div className="sideLogoBar position-sticky">
       <div className="d-flex flex-column h-75 justify-content-start align-items-center gap-5 mt-3">
         <Link to="/Login">
           <img src={logo} alt="logo" />

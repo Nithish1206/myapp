@@ -11,8 +11,8 @@ const AddPatientDemographic = ({ setShow }) => {
     { label: "DOB", Placeholder: "Enter dob", value: "", type: "date" },
     { label: "Consumption Period", Placeholder: "Enter Consumption Period", value: "", type: "text" },
     { label: "Onboard Date", Placeholder: "Enter onboard date", value: "", type: "date" },
-    { label: "Training", Placeholder: "Select training", value: "", type: "text" },
-    { label: "Assigned To", placeholder: "Assigned to", valur: "", type: "text" },
+    { label: "Training", Placeholder: "Select training", value: "Enrolled", type: "text" },
+    { label: "Assigned To", placeholder: "Assigned to", value: "Bruce", type: "text" },
   ]);
 
   const AddPatientDetails = (details) => {
@@ -35,12 +35,17 @@ const AddPatientDemographic = ({ setShow }) => {
     setDetails(list);
   };
 
+  const AddDetail = () => {
+    sessionStorage.setItem("AddDetail", JSON.stringify(details));
+    setShow("B");
+  };
+
   return (
     <Row className="mt-5 border border-1 rounded p-4 d-flex">
       {AddPatientDetails(details)}
       <Col className="d-flex justify-content-end gap-4">
         <button className="border-0 p-2 px-3 rounded cancelbtn fw-semibold text-secondary">Cancel</button>
-        <button className="border-0 p-2 px-4 rounded nextbtn fw-semibold text-white" onClick={() => setShow("B")}>
+        <button className="border-0 p-2 px-4 rounded nextbtn fw-semibold text-white" onClick={() => AddDetail()}>
           Next
         </button>
       </Col>

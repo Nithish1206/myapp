@@ -1,0 +1,39 @@
+import React from "react";
+import "../../CSS/AddPatient.css";
+import { Link } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
+import { useState } from "react";
+import EditPatientDemographic from "./EditPatientDemographic";
+import EditPatientIssue from "./EditPatientIssue";
+import { useParams } from "react-router-dom";
+
+const AddPatient = () => {
+  const { id } = useParams();
+  const AllPerson = JSON.parse(localStorage.getItem("PatientData"));
+  const person = AllPerson.find((al) => al.Id === parseInt(id));
+
+  const [showComponent, setShowComponent] = useState("A");
+  return (
+    <div className="m-5">
+      <div className="d-flex">
+        <Link to="/PatientList" className="text-decoration-none">
+          <h4 className="text-secondary">Patients List</h4>
+        </Link>
+        <span className="iconamoon--arrow-right-2"></span>
+        <h4>{person.FirstName + " " + person.LastName}</h4>
+      </div>
+      <Row className="mt-4">
+        <Col className={`${showComponent === "A" ? "heading-style" : "heading-no-style"} d-flex justify-content-center p-0 m-0 pb-2 on-hover`}>
+          <h4 onClick={() => setShowComponent("A")}>Patients Demographics</h4>
+        </Col>
+        <Col className={`${showComponent === "B" ? "heading-style" : "heading-no-style"} d-flex justify-content-center p-0 m-0 pb-2 on-hover`}>
+          <h4 onClick={() => setShowComponent("B")}>Patient issue Details</h4>
+        </Col>
+        {showComponent === "A" && <EditPatientDemographic setShow={setShowComponent} person={person} />}
+        {showComponent === "B" && <EditPatientIssue />}
+      </Row>
+    </div>
+  );
+};
+
+export default AddPatient;

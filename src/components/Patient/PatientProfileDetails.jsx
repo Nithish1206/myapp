@@ -2,12 +2,17 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 
 const PatientProfileDetails = ({ person }) => {
-  const handleDetails = () => {
-    console.log(person);
+  const handledetails = () => {
+    return Object.entries(person).map(([key, value]) => (
+      <Col md={3} key={key} className="mb-4">
+        <p className="fw-medium m-0 p-0 pb-2">{key}</p>
+        <p className="text-secondary">{value}</p>
+      </Col>
+    ));
   };
   return (
     <div>
-      <Row className="mt-3">
+      <Row className="mt-4">
         <Col md={3} className="heading-style">
           <div className="d-flex justify-content-center align-items-center">
             <h5>Patient demograpic</h5>
@@ -15,21 +20,24 @@ const PatientProfileDetails = ({ person }) => {
         </Col>
         <Col md={3} className="heading-no-style">
           <div className="d-flex justify-content-center align-items-center text-muted">
-            <h5>Patient demograpic</h5>
+            <h5>Medical history</h5>
           </div>
         </Col>
         <Col md={3} className="heading-no-style">
           <div className="d-flex justify-content-center align-items-center text-muted">
-            <h5>Patient demograpic</h5>
+            <h5>Clinical Trails</h5>
           </div>
         </Col>
         <Col md={3} className="heading-no-style">
           <div className="d-flex justify-content-center align-items-center text-muted">
-            <h5>Patient demograpic</h5>
+            <h5>Doctor Notes</h5>
           </div>
         </Col>
       </Row>
-      <Row>{handleDetails()}</Row>
+
+      <Row id="obj-container" className="d-flex mt-5 p-4 pt-5 border border-1 rounded">
+        {handledetails()}
+      </Row>
     </div>
   );
 };

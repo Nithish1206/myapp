@@ -12,7 +12,7 @@ const Navigation = ({ name }) => {
     Role: "Admin",
   };
   return (
-    <div className="w-100 d-flex justify-content-end p-0 m-0 pe-5 pt-4">
+    <div className="w-100 d-flex justify-content-end p-0 m-0 pe-5 pt-4 position-sticky">
       <div className="navDiv d-flex justify-content-end p-2">
         <button className="btn border-0">
           <img src={bell} alt="" />

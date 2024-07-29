@@ -5,23 +5,45 @@ import { Icon } from "@iconify/react";
 
 const PatientList = () => {
   const navigate = useNavigate();
-  const patient = JSON.parse(sessionStorage.getItem("PatientData"));
+
+  const patient = JSON.parse(localStorage.getItem("PatientData"));
   const PatientDetails = () => {
     const List = patient.map((list, index) => (
-      <tr key={index} onClick={() => handleClick(list.id)} className="on-hover">
-        <td>{list.id}</td>
-        <td>{list.name}</td>
-        <td>{list.email}</td>
-        <td>{list.phone}</td>
-        <td>{list.issueType}</td>
-        <td>{list.period}</td>
-        <td>{list.onboardDate}</td>
-        <td>{list.training}</td>
-        <td>{list.assignedTo}</td>
-        <td>{list.score}</td>
-        <td className="d-flex justify-content-evenly">
-          <span className="bxs--edit"></span>
-          <span className="material-symbols--delete-outline"></span>
+      <tr key={index}>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.Id}
+        </td>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.FirstName + " " + list.LastName}
+        </td>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.Email}
+        </td>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.Phone}
+        </td>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.IssueType}
+        </td>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.Period}
+        </td>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.OnboardDate}
+        </td>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.Training}
+        </td>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.AssignedTo}
+        </td>
+        <td onClick={() => handleClick(list.Id)} className="on-hover">
+          {list.Score}
+        </td>
+
+        <td className="d-flex justify-content-evenly gap-3">
+          <button className="bxs--edit border-0 outline-none" onClick={() => handleEdit(list.Id)}></button>
+          <button className="material-symbols--delete-outline border-0 outline-none" onClick={() => handleDelete(list.Id)}></button>
         </td>
       </tr>
     ));
@@ -29,8 +51,17 @@ const PatientList = () => {
   };
   ///handleClick
   const handleClick = (id) => {
-    console.log("clicked");
     navigate(`/PatientList/PatientProfile/${id}`);
+  };
+  ///handleEdit
+  const handleEdit = (id) => {
+    navigate(`/PatientList/EditProfile/${id}`);
+  };
+  ///handleDelete
+  const handleDelete = (id) => {
+    const temp = patient.filter((list) => list.Id !== id);
+    localStorage.setItem("PatientData", JSON.stringify(temp));
+    navigate("/PatientList");
   };
 
   return (
@@ -49,8 +80,8 @@ const PatientList = () => {
         </div>
       </header>
       <div>
-        <table className="table table-hover table-bordered mt-4">
-          <thead>
+        <table className="table table-bordered mt-4">
+          <thead className="text-center">
             <tr>
               <th scope="col">Patient ID</th>
               <th scope="col">Patient Name</th>

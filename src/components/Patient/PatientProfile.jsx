@@ -7,8 +7,9 @@ import PatientProfileDetails from "./PatientProfileDetails";
 
 const PatientProfile = () => {
   const { id } = useParams();
-  const AllPerson = JSON.parse(sessionStorage.getItem("PatientData"));
-  const person = AllPerson.find((al) => al.id === parseInt(id));
+  const AllPerson = JSON.parse(localStorage.getItem("PatientData"));
+  const person = AllPerson.find((al) => al.Id === parseInt(id));
+
   return (
     <div className="m-5">
       <div className="d-flex">
@@ -16,7 +17,7 @@ const PatientProfile = () => {
           <h4 className="text-secondary">Patients List</h4>
         </Link>
         <span className="iconamoon--arrow-right-2"></span>
-        <h4>{person.name}</h4>
+        <h4>{person.FirstName + " " + person.LastName}</h4>
       </div>
       <div className="mt-3">
         <Row className="profile-nav rounded-3">
@@ -26,16 +27,16 @@ const PatientProfile = () => {
             </div>
             <div className="p-2 px-3">
               <div className="d-flex align-items-end">
-                <p className="p-0 m-0 pe-3 fw-semibold fs-5  ">{person.name}</p>
+                <p className="p-0 m-0 pe-3 fw-semibold fs-5  ">{person.FirstName + " " + person.LastName}</p>
                 <p className="text-success p-0 m-0 fw-medium d-flex align-items-center">
                   <span className="bi--dot"></span>Active
                 </p>
               </div>
               <div>
-                <p className="issue-css p-0 m-0 mt-2 text-center">{person.issueType}</p>
+                <p className="issue-css p-0 m-0 mt-2 text-center">{person.IssueType}</p>
                 <div className="d-flex mt-2">
                   <p className="text-secondary p-0 m-0">Score : &nbsp;</p>
-                  <p className="score-css p-0 m-0">{person.score}</p>
+                  <p className="score-css p-0 m-0">{person.Score}</p>
                 </div>
               </div>
             </div>
