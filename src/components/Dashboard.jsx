@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   function box(input) {
     return (
-      <Col className="m-0 p-0">
+      <Col md={12} lg={3} className="m-0 p-0">
         <div className="boxcss d-flex justify-content-between align-items-center rounded-4 p-3 ">
           <div>
             <h4>{input.title}</h4>
@@ -27,7 +27,7 @@ const Dashboard = () => {
     );
   }
   return (
-    <div className="ms-5 m-0 p-0">
+    <div className="ms-3 ms-md-5 m-0 p-0">
       <Row className="w-100">
         <h2 className="w-100 mt-3">Dashboard</h2>
       </Row>
@@ -35,7 +35,6 @@ const Dashboard = () => {
         {box(box1)}
         {box(box2)}
         {box(box3)}
-        <Col></Col>
       </Row>
     </div>
   );

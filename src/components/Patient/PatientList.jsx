@@ -16,7 +16,7 @@ const PatientList = () => {
           </td>
         ))}
 
-        <td className="d-flex justify-content-evenly gap-3">
+        <td className=" Action">
           <button className="bxs--edit border-0 outline-none" onClick={() => handleEdit(list.Id)}></button>
           <button className="material-symbols--delete-outline border-0 outline-none" onClick={() => handleDelete(list.Id)}></button>
         </td>
@@ -58,10 +58,10 @@ const PatientList = () => {
   };
 
   return (
-    <div className="m-5">
-      <header className="d-flex justify-content-between">
-        <h3>Patient List</h3>
-        <div className="d-flex align-items-center w-25">
+    <div className="p-3 p-md-5">
+      <header className="d-flex justify-content-between flex-wrap">
+        <h3 className="col-12 col-md-6 m-0 p-0">Patient List</h3>
+        <div className="col-12 col-md-6 d-flex align-items-center w-auto">
           <div className="icon-input rounded-3 p-1 px-3 w-100 ">
             <Icon icon="ion:search" width="1.5rem" height="1.5rem" className="search-icon" />
             <input type="search" placeholder="Search" className="d-flex border-0 search-input ps-2 w-auto flex-fill" />
@@ -72,8 +72,8 @@ const PatientList = () => {
           </Link>
         </div>
       </header>
-      <div>
-        <table className="table table-bordered mt-4">
+      <div className="table-responsive border border-1 mt-4 m-0 p-0">
+        <table className="table table-bordered m-0 p-0 ">
           <thead className="text-center">
             <tr>
               <th scope="col">Patient ID</th>
@@ -87,7 +87,9 @@ const PatientList = () => {
               <th scope="col">Training</th>
               <th scope="col">Assign To</th>
               <th scope="col">Score</th>
-              <th scope="col">Action</th>
+              <th className="Action" scope="col">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>{PatientDetails()}</tbody>

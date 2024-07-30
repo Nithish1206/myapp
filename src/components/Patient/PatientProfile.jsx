@@ -21,13 +21,13 @@ const PatientProfile = () => {
       </div>
       <div className="mt-3">
         <Row className="profile-nav rounded-3">
-          <Col className="d-flex m-0 p-0 p-2 align-items-center">
+          <Col className="d-flex m-0 p-0 p-2 align-items-center flex-wrap flex-md-nowrap">
             <div className="ps-3">
-              <img src={pic} alt="profile" className="rounded-3" width={90} height={90} />
+              <img src={pic} alt="profile" className="rounded-3 " width={90} height={90} />
             </div>
             <div className="p-2 px-3">
-              <div className="d-flex align-items-end">
-                <p className="p-0 m-0 pe-3 fw-semibold fs-5  ">{person.FirstName + " " + person.LastName}</p>
+              <div className="d-flex align-items-end flex-wrap">
+                <p className="p-0 m-0 pe-3 fw-semibold fs-5 ">{person.FirstName + " " + person.LastName}</p>
                 <p className="text-success p-0 m-0 fw-medium d-flex align-items-center">
                   <span className="bi--dot"></span>Active
                 </p>
@@ -41,8 +41,8 @@ const PatientProfile = () => {
               </div>
             </div>
           </Col>
-          <Col className="d-flex align-items-center justify-content-end">
-            <div className="p-0 border border-1 rounded me-2">
+          <Col className="d-flex align-items-center justify-content-center justify-content-md-end">
+            <div className="d-flex flex-nowrap p-0 border border-1 rounded me-2">
               <span className="tabler--message-dots m-2"></span>
               <span className="fluent--call-16-regular m-2"></span>
               <span className="fluent--video-32-regular m-2"></span>

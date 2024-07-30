@@ -41,7 +41,7 @@ const AddPatientDemographic = ({ setShow }) => {
   };
 
   return (
-    <Row className="mt-5 border border-1 rounded p-4 d-flex">
+    <Row className="mt-5 border border-1 rounded p-1 p-md-4 d-flex">
       {AddPatientDetails(details)}
       <Col className="d-flex justify-content-end gap-4">
         <button className="border-0 p-2 px-3 rounded cancelbtn fw-semibold text-secondary">Cancel</button>
