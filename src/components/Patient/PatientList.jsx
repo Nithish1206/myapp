@@ -10,36 +10,11 @@ const PatientList = () => {
   const PatientDetails = () => {
     const List = patient.map((list, index) => (
       <tr key={index}>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.Id}
-        </td>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.FirstName + " " + list.LastName}
-        </td>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.Email}
-        </td>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.Phone}
-        </td>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.IssueType}
-        </td>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.Period}
-        </td>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.OnboardDate}
-        </td>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.Training}
-        </td>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.AssignedTo}
-        </td>
-        <td onClick={() => handleClick(list.Id)} className="on-hover">
-          {list.Score}
-        </td>
+        {Object.entries(list).map(([key, value]) => (
+          <td className="on-hover" key={key} onClick={() => handleClick(list.Id)}>
+            {value}
+          </td>
+        ))}
 
         <td className="d-flex justify-content-evenly gap-3">
           <button className="bxs--edit border-0 outline-none" onClick={() => handleEdit(list.Id)}></button>
