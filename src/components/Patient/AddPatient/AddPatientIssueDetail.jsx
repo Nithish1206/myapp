@@ -22,7 +22,7 @@ const PatientIssueDetail = () => {
       Score: "5/10",
     };
     localStorage.setItem("PatientData", JSON.stringify([...existData, List]));
-
+    sessionStorage.setItem("AddDetails", JSON.stringify());
     navigate("/PatientList");
   };
   return (

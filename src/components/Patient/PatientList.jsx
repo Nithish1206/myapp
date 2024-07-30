@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 
 const PatientList = () => {
   const navigate = useNavigate();
-
   const patient = JSON.parse(localStorage.getItem("PatientData"));
   const PatientDetails = () => {
     const List = patient.map((list, index) => (
@@ -78,7 +77,8 @@ const PatientList = () => {
           <thead className="text-center">
             <tr>
               <th scope="col">Patient ID</th>
-              <th scope="col">Patient Name</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
               <th scope="col">Email</th>
               <th scope="col">Phone Number</th>
               <th scope="col">Issue Type</th>
