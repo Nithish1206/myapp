@@ -2,6 +2,7 @@ import React from "react";
 import "../CSS/PatientList.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import Swal from "sweetalert2";
 
 const PatientList = () => {
   const navigate = useNavigate();
@@ -34,9 +35,27 @@ const PatientList = () => {
   };
   ///handleDelete
   const handleDelete = (id) => {
-    const temp = patient.filter((list) => list.Id !== id);
-    localStorage.setItem("PatientData", JSON.stringify(temp));
-    navigate("/PatientList");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+
+        const temp = patient.filter((list) => list.Id !== id);
+        localStorage.setItem("PatientData", JSON.stringify(temp));
+        navigate("/PatientList");
+      }
+    });
   };
 
   return (
