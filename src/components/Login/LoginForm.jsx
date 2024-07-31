@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import Rebirth from "../Assests/Rebirth_logo.png";
+import Rebirth from "../../Assests/Rebirth_logo.png";
 import { Link } from "react-router-dom";
 
 const LoginForm = () => {

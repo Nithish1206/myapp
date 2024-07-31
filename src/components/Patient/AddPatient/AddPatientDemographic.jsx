@@ -7,9 +7,19 @@ const AddPatientDemographic = ({ setShow }) => {
     { label: "First Name", Placeholder: "Enter first Name", value: "", type: "text" },
     { label: "Last Name", Placeholder: "Enter last Name", value: "", type: "text" },
     { label: "Email Address", Placeholder: "Enter email address", value: "", type: "email" },
-    { label: "Emergency Contact Number", Placeholder: "Enter emergency contact number", value: "", type: "text" },
+    {
+      label: "Emergency Contact Number",
+      Placeholder: "Enter emergency contact number",
+      value: "",
+      type: "text",
+    },
     { label: "DOB", Placeholder: "Enter dob", value: "", type: "date" },
-    { label: "Consumption Period", Placeholder: "Enter Consumption Period", value: "", type: "text" },
+    {
+      label: "Consumption Period",
+      Placeholder: "Enter Consumption Period",
+      value: "",
+      type: "text",
+    },
     { label: "Onboard Date", Placeholder: "Enter onboard date", value: "", type: "date" },
     { label: "Training", Placeholder: "Select training", value: "Enrolled", type: "text" },
     { label: "Assigned To", placeholder: "Assigned to", value: "Bruce", type: "text" },
@@ -22,7 +32,14 @@ const AddPatientDemographic = ({ setShow }) => {
           <label htmlFor={index} className="pb-2">
             {detail.label}
           </label>
-          <input type={detail.type} className="form-control shadow-none" value={detail.value} id={index} placeholder={detail.Placeholder} onChange={(e) => handleChange(e.target.value, index)} />
+          <input
+            type={detail.type}
+            className="form-control shadow-none"
+            value={detail.value}
+            id={index}
+            placeholder={detail.Placeholder}
+            onChange={(e) => handleChange(e.target.value, index)}
+          />
         </div>
       </Col>
     ));

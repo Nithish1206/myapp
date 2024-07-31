@@ -18,10 +18,14 @@ const AddPatient = () => {
         <h4>Add Patients</h4>
       </div>
       <Row className="mt-4 m-0 p-0">
-        <Col className={`${showComponent === "A" ? "heading-style" : "heading-no-style"} d-flex justify-content-center p-1 m-0 pb-2 on-hover`}>
+        <Col
+          className={`${showComponent === "A" ? "heading-style" : "heading-no-style"} 
+          d-flex justify-content-center p-1 m-0 pb-2 on-hover`}>
           <h4 onClick={() => setShowComponent("A")}>Patients Demographics</h4>
         </Col>
-        <Col className={`${showComponent === "B" ? "heading-style" : "heading-no-style"} d-flex justify-content-center p-1 m-0 pb-2 on-hover`}>
+        <Col
+          className={`${showComponent === "B" ? "heading-style" : "heading-no-style"} 
+          d-flex justify-content-center p-1 m-0 pb-2 on-hover`}>
           <h4 onClick={() => setShowComponent("B")}>Patient issue Details</h4>
         </Col>
         <div>

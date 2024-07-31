@@ -21,7 +21,7 @@ const PatientProfile = () => {
       </div>
       <div className="mt-3">
         <Row className="profile-nav rounded-3">
-          <Col className="d-flex m-0 p-0 p-2 align-items-center flex-wrap flex-md-nowrap">
+          <Col className="d-flex m-0 p-0 p-2 align-items-center col-12 col-md-6">
             <div className="ps-3">
               <img src={pic} alt="profile" className="rounded-3 " width={90} height={90} />
             </div>

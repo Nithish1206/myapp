@@ -27,9 +27,9 @@ const Dashboard = () => {
     );
   }
   return (
-    <div className="ms-3 ms-md-5 m-0 p-0">
+    <div className="ms-3 ms-md-5 mt-5 m-0 p-0">
       <Row className="w-100">
-        <h2 className="w-100 mt-3">Dashboard</h2>
+        <h2 className="w-100">Dashboard</h2>
       </Row>
       <Row className="gap-5 mt-4 w-100">
         {box(box1)}

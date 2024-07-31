@@ -5,9 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import { Row, Col } from "react-bootstrap";
-import SideBar from "./components/SideBar";
+import SideBar from "./components/SideBar/SideBar";
 import Navigation from "./components/Navigation";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import PatientList from "./components/Patient/PatientList";
 import AddPatient from "./components/Patient/AddPatient/AddPatient";
 import PatientProfile from "./components/Patient/PatientProfile";
@@ -60,7 +60,10 @@ const AppRouter = () => {
           <Route path="PatientList/PatientProfile/:id" element={<PatientProfile />} />
           <Route path="/PatientList/AddPatient" element={<AddPatient />} />
           <Route path="/PatientList/EditProfile/:id" element={<EditPatientDetail />} />
-          <Route path="/Profile" element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />} />
+          <Route
+            path="/Profile"
+            element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />}
+          />
         </Routes>
       </Col>
     </Row>

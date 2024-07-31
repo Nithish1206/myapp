@@ -1,12 +1,16 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import logo from "../Assests/Logo.png";
+import logo from "../../Assests/Logo.png";
 import { Spinner } from "react-bootstrap";
-import "./CSS/Login.css";
+import "../CSS/Login.css";
 import LoginForm from "./LoginForm";
 
 const Login = () => {
-  const title = { heading: "Empowering healthcare professionals", para1: "Empowering healthcare Professionals to deliver", para2: "exceptional care while enhancing patient outcomes" };
+  const title = {
+    heading: "Empowering healthcare professionals",
+    para1: "Empowering healthcare Professionals to deliver",
+    para2: "exceptional care while enhancing patient outcomes",
+  };
   return (
     <div className="login-page">
       <Row className="m-0 p-0">

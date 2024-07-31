@@ -16,9 +16,11 @@ const PatientList = () => {
           </td>
         ))}
 
-        <td className=" Action">
-          <button className="bxs--edit border-0 outline-none" onClick={() => handleEdit(list.Id)}></button>
-          <button className="material-symbols--delete-outline border-0 outline-none" onClick={() => handleDelete(list.Id)}></button>
+        <td className=" Action text-center text-nowrap ">
+          <button className="bxs--edit border-0 outline-none me-1" onClick={() => handleEdit(list.Id)}></button>
+          <button
+            className="material-symbols--delete-outline border-0 outline-none ms-1"
+            onClick={() => handleDelete(list.Id)}></button>
         </td>
       </tr>
     ));
