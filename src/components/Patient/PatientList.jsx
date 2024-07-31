@@ -61,7 +61,7 @@ const PatientList = () => {
 
   return (
     <div className="p-3 p-md-5">
-      <header className="d-flex justify-content-between flex-wrap">
+      <header className="d-flex justify-content-between flex-wrap ">
         <h3 className="col-12 col-md-6 m-0 p-0">Patient List</h3>
         <div className="col-12 col-md-6 d-flex align-items-center w-auto">
           <div className="icon-input rounded-3 p-1 px-3 w-100 ">
@@ -74,8 +74,8 @@ const PatientList = () => {
           </Link>
         </div>
       </header>
-      <div className="table-responsive border border-1 mt-4 m-0 p-0">
-        <table className="table table-bordered m-0 p-0 ">
+      <div className="table-responsive border border-1 mt-4 m-0 p-0 overflow-y-auto" style={{ maxHeight: "500px" }}>
+        <table className="table table-bordered m-0 p-0">
           <thead className="text-center">
             <tr>
               <th scope="col">Patient ID</th>

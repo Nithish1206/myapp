@@ -48,11 +48,13 @@ const AppRouter = () => {
   const [User, setUser] = useState([details[0].value, details[2].value]);
   return (
     <Row className="vh-100 m-0 p-0 d-flex flex-nowrap">
-      <Col xs={1} className="col1 p-0 m-0 w-auto">
+      <Col md={1} className="col1 p-0 m-0 w-auto">
         <SideBar />
       </Col>
       <Col className="p-0 m-0 overflow-x-hidden">
-        <Navigation name={User[0]} />
+        <div className="sticky-top m-0 p-0">
+          <Navigation name={User[0]} />
+        </div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Dashboard" element={<Dashboard />} />

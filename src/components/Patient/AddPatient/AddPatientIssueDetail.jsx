@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const PatientIssueDetail = () => {
   const navigate = useNavigate();
@@ -23,6 +24,20 @@ const PatientIssueDetail = () => {
     };
     localStorage.setItem("PatientData", JSON.stringify([...existData, List]));
     sessionStorage.setItem("AddDetails", JSON.stringify());
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Added successfully",
+    });
     navigate("/PatientList");
   };
   return (

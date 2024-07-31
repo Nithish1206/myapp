@@ -19,7 +19,13 @@ const Profile = ({ User, setUser, details, setDetails }) => {
       <Col lg={4} key={index} className="p-0 m-0">
         <div className="m-auto pe-3 pb-3">
           <label className="d-flex py-2 fw-semibold">{data.label}</label>
-          <input type={data.type} value={data.value} onChange={(e) => handleChange(e.target.value, index)} disabled={edit} className="form-control shadow-none p-2 w-100 text-secondary" />
+          <input
+            type={data.type}
+            value={data.value}
+            onChange={(e) => handleChange(e.target.value, index)}
+            disabled={edit}
+            className="form-control shadow-none p-2 w-100 text-secondary"
+          />
         </div>
       </Col>
     ));
@@ -40,12 +46,12 @@ const Profile = ({ User, setUser, details, setDetails }) => {
   const Email = User[1];
 
   return (
-    <div className="ms-5 m-0 p-0 me-5">
+    <div className="m-0 p-0 mx-2 mx-md-5 ">
       <Row className="w-100 m-0 p-0">
         <h2 className="w-100 mt-3 m-0 p-0">Profile</h2>
       </Row>
       <Row className="profileTop mt-4 rounded-3 m-0 p-0">
-        <div className="d-flex justify-content-between p-0 m-0 p-2 px-3">
+        <div className="d-flex justify-content-between align-items-center p-0 m-0 p-2 px-3 flex-wrap">
           <div className="d-flex align-items-center">
             <img src={profilePic} alt="profile" className="rounded-3" width={60} height={60} />
             <div className="m-0 p-0 ms-3">
@@ -55,8 +61,13 @@ const Profile = ({ User, setUser, details, setDetails }) => {
               </p>
             </div>
           </div>
-          <div className="d-flex align-items-center pe-3">
-            <p className={`p-2 rounded-3 ${status === "Active" ? "ActiveStatus" : "InActiveStatus"}`}>{status}</p>
+          <div className="d-flex align-items-center pe-3 m-0 p-0 ">
+            <p
+              className={`p-2 rounded-3 m-0 p-0 mt-2 mt-md-0 ${
+                status === "Active" ? "ActiveStatus" : "InActiveStatus"
+              }`}>
+              {status}
+            </p>
           </div>
         </div>
       </Row>

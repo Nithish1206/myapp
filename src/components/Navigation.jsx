@@ -13,7 +13,7 @@ const Navigation = ({ name }) => {
     Role: "Admin",
   };
   return (
-    <div className="w-100 d-flex justify-content-between justify-content-md-end p-0 m-0 px-2 pe-md-5 pt-4">
+    <div className="w-100 d-flex justify-content-between justify-content-md-end p-0 m-0 px-2 pe-md-5 pt-4 bg-white">
       <OffCanvasSidebar />
       <div className="navDiv d-flex justify-content-end p-2">
         <button className="btn border-0">

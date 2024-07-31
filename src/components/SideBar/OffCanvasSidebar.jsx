@@ -22,7 +22,9 @@ function OffCanvasSidebar() {
     const list = menuList.map((menu) =>
       Object.entries(menu).map(([key, value]) => (
         <li className="list-group-item" key={key}>
-          <Link to={value}>{key}</Link>
+          <Link to={value} className="text-dark text-decoration-none">
+            {key}
+          </Link>
         </li>
       ))
     );
@@ -39,7 +41,7 @@ function OffCanvasSidebar() {
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <ul class="list-group list-group-flush">{handleMenu()}</ul>
+          <ul className="list-group list-group-flush">{handleMenu()}</ul>
         </Offcanvas.Body>
       </Offcanvas>
     </div>
