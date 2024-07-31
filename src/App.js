@@ -13,6 +13,7 @@ import AddPatient from "./components/Patient/AddPatient/AddPatient";
 import PatientProfile from "./components/Patient/PatientProfile";
 import Records from "./components/Patient/Records.json";
 import EditPatientDetail from "./components/Patient/EditPatient/EditPatientDetail";
+import Home from "./components/Home";
 
 function App() {
   const storedData = JSON.parse(localStorage.getItem("PatientData"));
@@ -53,6 +54,7 @@ const AppRouter = () => {
       <Col className="p-0 m-0 overflow-x-hidden">
         <Navigation name={User[0]} />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/PatientList" element={<PatientList />} />
           <Route path="PatientList/PatientProfile/:id" element={<PatientProfile />} />
