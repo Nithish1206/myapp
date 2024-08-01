@@ -19,7 +19,7 @@ const SideBar = () => {
         </Link>
         <Link to="/">
           <Icon
-            icon="akar-icons:dashboard"
+            icon="lucide:layout-list"
             width="1.8rem"
             height="1.8rem"
             className={`text-secondary sidebar-item ${activeIndex === 0 ? "active" : ""}`}
@@ -37,14 +37,14 @@ const SideBar = () => {
         </Link>
         <Link to="/PatientList">
           <Icon
-            icon="flowbite:user-add-outline"
+            icon="solar:user-circle-linear"
             width="1.8rem"
             height="1.8rem"
             className={`text-secondary sidebar-item ${activeIndex === 2 ? "active" : ""}`}
             onClick={() => handleItemClick(2)}
           />
         </Link>
-        <Link>
+        <Link to="/Providers">
           <Icon
             icon="fluent:people-16-regular"
             width="1.8rem"
