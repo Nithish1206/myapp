@@ -10,8 +10,10 @@ const AddProviders = () => {
   const [list, setList] = useState({
     title: "",
     price: "",
-    images: ["https://i.imgur.com/keVCVIa.jpeg"],
-    description: "Enhance your morning routine with our sleek 2-slice toaster",
+    images: [`https://i.imgur.com/62gGzeF.jpeg`],
+
+    description:
+      "Step into the spotlight with these eye-catching rainbow glitter high heels. Designed to dazzle, each shoe boasts a kaleidoscope of shimmering colors that catch and reflect light with every step. Perfect for special occasions or a night out, these stunners are sure to turn heads and elevate any ensemble.",
     categoryId: 1,
   });
 
@@ -28,7 +30,6 @@ const AddProviders = () => {
   };
 
   const handleSave = () => {
-    console.log(list);
     axios.post("https://api.escuelajs.co/api/v1/products", list).then((response) => console.log(response));
     const Toast = Swal.mixin({
       toast: true,

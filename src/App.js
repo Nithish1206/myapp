@@ -16,6 +16,8 @@ import EditPatientDetail from "./components/Patient/EditPatient/EditPatientDetai
 import Home from "./components/Home";
 import Providers from "./components/Providers/Providers";
 import AddProviders from "./components/Providers/AddProviders";
+import ViewProviders from "./components/Providers/ViewProviders";
+import EditProviders from "./components/Providers/EditProviders";
 
 function App() {
   const storedData = JSON.parse(localStorage.getItem("PatientData"));
@@ -70,6 +72,8 @@ const AppRouter = () => {
           />
           <Route path="/Providers" element={<Providers />} />
           <Route path="/Providers/AddProviders" element={<AddProviders />} />
+          <Route path="/Providers/ViewProvider/:id" element={<ViewProviders />} />
+          <Route path="/Providers/EditProviders/:id" element={<EditProviders />} />
         </Routes>
       </Col>
     </Row>

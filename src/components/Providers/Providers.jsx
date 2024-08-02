@@ -1,33 +1,76 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { instance } from "../API";
 import { Spinner } from "react-bootstrap";
 import moment from "moment";
+import "../CSS/Providers.css";
+import Swal from "sweetalert2";
 
 const Providers = () => {
+  const navigate = useNavigate();
   const [providers, setProviders] = useState([]);
+
   useEffect(() => {
     instance
       .get("/products")
       .then((response) => setProviders(response.data))
       .catch((e) => console.log(e));
-  }, []);
+  }, [providers]);
 
   const ProviderDetails = () => {
     return providers.map((provide, index) => (
       <tr key={provide.id}>
         <td>{index + 1}</td>
         <td>{provide.id}</td>
-        <td className="text-start">{provide.title}</td>
-        <td>{provide.price}</td>
+        <td
+          className="text-start on-hover"
+          onClick={() => {
+            navigate(`/Providers/ViewProvider/${provide.id}`);
+          }}>
+          {provide.title}
+        </td>
+        <td>$ {provide.price}</td>
         <td type="date">{moment.utc(provide.updatedAt).local().format("DD-MM-YYYY")}</td>
-        <td className=" Action ">
-          <button className="bxs--edit border-0 outline-none me-2"></button>
-          <button className="material-symbols--delete-outline border-0 outline-none ms-2"></button>
+
+        <td className=" Action text-nowrap">
+          <Link to={`/Providers/EditProviders/${provide.id}`} className="bxs--edit border-0 outline-none me-2"></Link>
+          <button
+            className="material-symbols--delete-outline border-0 outline-none ms-2"
+            onClick={() => {
+              handleDelete(provide.id);
+            }}></button>
         </td>
       </tr>
     ));
+  };
+
+  ////handle Delete
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to Delete this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+        instance
+          .delete(`/products/${id}`)
+          .then((response) => {
+            console.log(response.data);
+            setProviders(providers.filter((provider) => provider.id !== id));
+          })
+          .catch((e) => console.log(e));
+      }
+    });
   };
 
   return (
@@ -36,7 +79,6 @@ const Providers = () => {
         <div className="d-flex align-items-center justify-content-center mt-5 pt-5">
           <p className="text-center fs-3 p-0 m-0 me-2">Loading </p>
           <Spinner animation="border" variant="success" role="status" />
-          {console.log(providers)}
         </div>
       ) : (
         <div>
@@ -57,14 +99,14 @@ const Providers = () => {
               </Link>
             </div>
           </header>
-          <div className="table-responsive border border-1 mt-4 m-0 p-0 overflow-y-auto" style={{ maxHeight: "500px" }}>
-            <table className="table table-bordered m-0 p-0 text-center">
+          <div className="table-responsive  rounded-3 shadow  mt-4 m-0 p-0 ">
+            <table className="table m-0 p-0 text-center">
               <thead className="sticky-top">
                 <tr>
                   <th scope="col">S.No</th>
                   <th scope="col">Patient ID</th>
                   <th scope="col">Title</th>
-                  <th scope="col">Price</th>
+                  <th scope="col">$ Price</th>
                   <th scope="col">UpdatedAt</th>
                   <th className="Action" scope="col">
                     Action

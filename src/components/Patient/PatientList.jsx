@@ -16,7 +16,7 @@ const PatientList = () => {
           </td>
         ))}
 
-        <td className=" Action text-center text-nowrap ">
+        <td className=" Action text-center text-nowrap">
           <button className="bxs--edit border-0 outline-none me-1" onClick={() => handleEdit(list.Id)}></button>
           <button
             className="material-symbols--delete-outline border-0 outline-none ms-1"
@@ -74,9 +74,9 @@ const PatientList = () => {
           </Link>
         </div>
       </header>
-      <div className="table-responsive border border-1 mt-4 m-0 p-0 overflow-y-auto" style={{ maxHeight: "500px" }}>
-        <table className="table table-bordered m-0 p-0">
-          <thead className="text-center">
+      <div className="table-responsive border border-1 mt-4 m-0 p-0 overflow-y-auto shadow rounded-3">
+        <table className="table m-0 p-0 text-center">
+          <thead>
             <tr>
               <th scope="col">Patient ID</th>
               <th scope="col">First Name</th>
