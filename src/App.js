@@ -18,6 +18,7 @@ import Providers from "./components/Providers/Providers";
 import AddProviders from "./components/Providers/AddProviders";
 import ViewProviders from "./components/Providers/ViewProviders";
 import EditProviders from "./components/Providers/EditProviders";
+import ProtectRouter from "./components/ProtectRouter/ProtectRouter";
 
 function App() {
   const storedData = JSON.parse(localStorage.getItem("PatientData"));
@@ -56,24 +57,24 @@ const AppRouter = () => {
         <SideBar />
       </Col>
       <Col className="p-0 m-0 overflow-x-hidden">
-        <div className="sticky-top m-0 p-0">
-          <Navigation name={User[0]} />
-        </div>
+        <Navigation name={User[0]} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
-          <Route path="/PatientList" element={<PatientList />} />
-          <Route path="PatientList/PatientProfile/:id" element={<PatientProfile />} />
-          <Route path="/PatientList/AddPatient" element={<AddPatient />} />
-          <Route path="/PatientList/EditProfile/:id" element={<EditPatientDetail />} />
-          <Route
-            path="/Profile"
-            element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />}
-          />
-          <Route path="/Providers" element={<Providers />} />
-          <Route path="/Providers/AddProviders" element={<AddProviders />} />
-          <Route path="/Providers/ViewProvider/:id" element={<ViewProviders />} />
-          <Route path="/Providers/EditProviders/:id" element={<EditProviders />} />
+          <Route element={<ProtectRouter />}>
+            <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path="/PatientList" element={<PatientList />} />
+            <Route path="PatientList/PatientProfile/:id" element={<PatientProfile />} />
+            <Route path="/PatientList/AddPatient" element={<AddPatient />} />
+            <Route path="/PatientList/EditProfile/:id" element={<EditPatientDetail />} />
+            <Route
+              path="/Profile"
+              element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />}
+            />
+            <Route path="/Providers" element={<Providers />} />
+            <Route path="/Providers/AddProviders" element={<AddProviders />} />
+            <Route path="/Providers/ViewProvider/:id" element={<ViewProviders />} />
+            <Route path="/Providers/EditProviders/:id" element={<EditProviders />} />
+          </Route>
         </Routes>
       </Col>
     </Row>

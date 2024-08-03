@@ -1,16 +1,19 @@
 import React from "react";
 import logo from "../../Assests/frame1_logo.png";
 import "../CSS/sidebar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { handleLogout } from "../Logout/Logout";
 
 const SideBar = () => {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleItemClick = (index) => {
     setActiveIndex(index);
   };
+
   return (
     <div className="sideLogoBar d-none d-md-flex m-0 p-0 px-3 px-lg-4">
       <div className="d-flex flex-column h-75 justify-content-start align-items-center gap-5 mt-3">
@@ -82,7 +85,10 @@ const SideBar = () => {
         </Link>
       </div>
       <div className="pb-5 d-flex justify-content-center pe-2">
-        <button>
+        <button
+          onClick={() => {
+            handleLogout(navigate);
+          }}>
           <Icon
             icon="tabler:logout-2"
             width="1.8rem"

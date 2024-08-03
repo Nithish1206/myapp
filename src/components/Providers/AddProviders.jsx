@@ -1,36 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Row, Col, FormGroup } from "react-bootstrap";
-import { Form } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Formik, Form, Field } from "formik";
+import { listValidation } from "./Validation";
 
 const AddProviders = () => {
   const navigate = useNavigate();
-  const [list, setList] = useState({
-    title: "",
-    price: "",
-    images: [`https://i.imgur.com/62gGzeF.jpeg`],
-
-    description:
-      "Step into the spotlight with these eye-catching rainbow glitter high heels. Designed to dazzle, each shoe boasts a kaleidoscope of shimmering colors that catch and reflect light with every step. Perfect for special occasions or a night out, these stunners are sure to turn heads and elevate any ensemble.",
-    categoryId: 1,
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setList({
-      ...list,
-      [name]: value,
-    });
-  };
 
   const handleCancel = () => {
     navigate("/Providers");
   };
 
-  const handleSave = () => {
-    axios.post("https://api.escuelajs.co/api/v1/products", list).then((response) => console.log(response));
+  const handleSave = async (values) => {
+    await axios.post("https://api.escuelajs.co/api/v1/products", values).then((response) => console.log(response));
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -55,38 +39,47 @@ const AddProviders = () => {
       </div>
       <Row className="mt-5 m-0 p-0 d-flex justify-content-center">
         <Col lg={5} className="rounded-4 p-5 shadow-lg">
-          <FormGroup className="vstack gap-4 ">
-            <div>
-              <Form.Label className="fw-semibold">Title</Form.Label>
-              <Form.Control
-                name="title"
-                type="text"
-                placeholder="Enter Title"
-                value={list.title}
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-            <div>
-              <Form.Label className="fw-semibold">Price</Form.Label>
-              <Form.Control
-                name="price"
-                type="number"
-                placeholder="Enter Price"
-                value={list.price}
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-            <button
-              className="rounded-2 outline-none border-0 bg-success text-white py-2 fw-semibold"
-              onClick={() => handleSave()}>
-              Save
-            </button>
-            <button
-              className="rounded-2 outline-none border-0 bg-danger text-white py-2 fw-semibold"
-              onClick={() => handleCancel()}>
-              Cancel
-            </button>
-          </FormGroup>
+          <Formik
+            initialValues={{
+              title: "",
+              price: "",
+              images: [`https://i.imgur.com/62gGzeF.jpeg`],
+              description: "",
+              categoryId: 1,
+            }}
+            validationSchema={listValidation}
+            onSubmit={(values) => {
+              handleSave(values);
+            }}>
+            {({ errors, touched }) => (
+              <Form className="vstack gap-2">
+                <label htmlFor="title">Title</label>
+                <Field name="title" placeholder="Enter title" className="rounded border border-1 p-2 " />
+                {errors.title && touched.title ? <div className="text-danger">{errors.title}</div> : null}
+
+                <label htmlFor="title">Price</label>
+                <Field name="price" placeholder="Enter price" type="number" className="rounded border border-1 p-2 " />
+                {errors.price && touched.price ? <div className="text-danger">{errors.price}</div> : null}
+
+                <label htmlFor="title">Description</label>
+                <Field
+                  name="description"
+                  type="text"
+                  placeholder="Enter Description"
+                  className="rounded border border-1 p-2 "
+                />
+                {errors.description && touched.description ? (
+                  <div className="text-danger">{errors.description}</div>
+                ) : null}
+                <button type="submit" className="border-0 rounded bg-success text-white p-2 mt-2">
+                  Submit
+                </button>
+                <div className="border-0 bg-danger text-white rounded p-2 text-center" onClick={() => handleCancel()}>
+                  Cancel
+                </div>
+              </Form>
+            )}
+          </Formik>
         </Col>
       </Row>
     </div>

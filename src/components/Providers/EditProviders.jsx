@@ -2,8 +2,8 @@ import { Formik, Form, Field } from "formik";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Row, Col, Spinner } from "react-bootstrap";
-import * as Yup from "yup";
 import { instance } from "../API";
+import { listValidation } from "./Validation";
 
 const EditProviders = () => {
   const navigate = useNavigate();
@@ -27,12 +27,6 @@ const EditProviders = () => {
   const handleCancel = () => {
     navigate("/Providers");
   };
-
-  const Validation = Yup.object().shape({
-    title: Yup.string().min(1, "Too Short!").max(50, "Too Long!").required("Required"),
-    price: Yup.number().required().positive().integer(),
-    description: Yup.string().min(1, "Too Short!").required("Required"),
-  });
 
   return (
     <div>
@@ -58,9 +52,9 @@ const EditProviders = () => {
                   price: providers.price || "",
                   description: providers.description || "",
                 }}
-                validationSchema={Validation}
-                onSubmit={(values) => {
-                  instance.put(`/products/${id}`, values);
+                validationSchema={listValidation}
+                onSubmit={async (values) => {
+                  await instance.put(`/products/${id}`, values);
                   navigate("/Providers");
                 }}>
                 {({ errors, touched }) => (

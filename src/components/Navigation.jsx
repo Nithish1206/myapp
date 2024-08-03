@@ -31,7 +31,7 @@ const Navigation = ({ name }) => {
                 <p className="d-block p-0 m-0 text-secondary">{profile.Role}</p>
               </div>
             </Dropdown.Toggle>
-            <Dropdown.Menu className="mt-3 p-0 rounded-4">
+            <Dropdown.Menu className="mt-3 p-0 rounded-4 z-2">
               <Dropdown.Item as={Link} to="/Profile" className="d-flex align-items-center gap-2 p-3 rounded-top-4">
                 <span className="solar--user-broken"></span>profile
               </Dropdown.Item>

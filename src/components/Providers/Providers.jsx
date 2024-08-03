@@ -16,7 +16,7 @@ const Providers = () => {
       .get("/products")
       .then((response) => setProviders(response.data))
       .catch((e) => console.log(e));
-  }, [providers]);
+  }, []);
 
   const ProviderDetails = () => {
     return providers.map((provide, index) => (
@@ -33,7 +33,7 @@ const Providers = () => {
         <td>$ {provide.price}</td>
         <td type="date">{moment.utc(provide.updatedAt).local().format("DD-MM-YYYY")}</td>
 
-        <td className=" Action text-nowrap">
+        <td className=" Action text-nowrap z-0">
           <Link to={`/Providers/EditProviders/${provide.id}`} className="bxs--edit border-0 outline-none me-2"></Link>
           <button
             className="material-symbols--delete-outline border-0 outline-none ms-2"
@@ -99,9 +99,9 @@ const Providers = () => {
               </Link>
             </div>
           </header>
-          <div className="table-responsive  rounded-3 shadow  mt-4 m-0 p-0 ">
+          <div className="table-responsive  rounded-3 shadow  mt-4 m-0 p-0">
             <table className="table m-0 p-0 text-center">
-              <thead className="sticky-top">
+              <thead className="sticky-top z-1">
                 <tr>
                   <th scope="col">S.No</th>
                   <th scope="col">Patient ID</th>
