@@ -1,3 +1,13 @@
-.table-responsive {
-  max-height: 500px;
+.Active-Class {
+  background-color: #51c8d3 !important;
+  color: white !important;
+}
+.hover:hover {
+  background-color: #ebebeb;
+}
+.hover {
+  user-select: none;
+}
+.break-select {
+  user-select: none;
 }
