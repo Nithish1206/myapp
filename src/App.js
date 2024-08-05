@@ -56,7 +56,7 @@ const AppRouter = () => {
       <Col md={1} className="col1 p-0 m-0 w-auto">
         <SideBar />
       </Col>
-      <Col className="p-0 m-0 overflow-x-hidden">
+      <Col className="p-0 m-0">
         <Navigation name={User[0]} />
         <Routes>
           <Route path="/" element={<Home />} />

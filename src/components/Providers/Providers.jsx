@@ -37,13 +37,15 @@ const Providers = () => {
 
     return (
       <>
-        <div className="table-responsive  rounded-3 shadow  mt-4 m-0 p-0">
-          <table className="table m-0 p-0 text-center">
+        <div className="table-responsive  rounded-3 shadow  mt-4 m-0 p-0 border border-1">
+          <table className="table m-0 p-0 text-center table-hover">
             <thead className="sticky-top z-1">
               <tr>
                 <th scope="col">Patient ID</th>
                 <th scope="col">Title</th>
-                <th scope="col">$ Price</th>
+                <th scope="col" className="text-nowrap">
+                  $ Price
+                </th>
                 <th scope="col">UpdatedAt</th>
                 <th className="Action" scope="col">
                   Action
@@ -66,11 +68,11 @@ const Providers = () => {
             renderOnZeroPageCount={null}
             className="d-flex justify-content-center align-items-center  mt-5 gap-3"
             previousClassName=" list-group"
-            pageClassName="list-group"
+            pageClassName="list-group d-none d-md-block"
             nextClassName="list-group"
             pageLinkClassName="text-decoration-none  list-group-item hover"
-            previousLinkClassName="text-decoration-none  list-group-item hover"
-            nextLinkClassName="text-decoration-none list-group-item hover"
+            previousLinkClassName="text-decoration-none  list-group-item hover text-nowrap"
+            nextLinkClassName="text-decoration-none list-group-item hover text-nowrap"
             activeLinkClassName="Active-Class"
           />
         </div>
@@ -88,7 +90,7 @@ const Providers = () => {
       ) : (
         <div>
           <header className="d-flex justify-content-between flex-wrap ">
-            <h3 className="col-12 col-md-6 m-0 p-0">Provider</h3>
+            <h3 className="col-12 col-md-5 m-0 p-0">Provider</h3>
             <div className="col-12 col-md-6 d-flex align-items-center w-auto">
               <div className="icon-input rounded-3 p-1 px-3 w-100 ">
                 <Icon icon="ion:search" width="1.5rem" height="1.5rem" className="search-icon" />
@@ -101,13 +103,20 @@ const Providers = () => {
                 />
               </div>
 
-              <Link to="/Providers/AddProviders" className="m-0 p-2">
+              <Link to="/Providers/AddProviders" className="m-0 ps-2">
                 <Icon icon="mingcute:add-fill" width="2.3rem" height="2.3rem" className="plus-icon p-1 rounded p-2" />
               </Link>
             </div>
           </header>
-          <PaginatedItems itemsPerPage={10} />
-          <h5 className="mt-3">List count : {providers.length}</h5>
+          <div className="d-none d-lg-block">
+            <PaginatedItems itemsPerPage={10} />
+          </div>
+          <div className="d-none d-md-block d-lg-none">
+            <PaginatedItems itemsPerPage={7} />
+          </div>
+          <div className="d-block d-md-none">
+            <PaginatedItems itemsPerPage={5} />
+          </div>
         </div>
       )}
     </div>

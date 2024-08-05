@@ -3,6 +3,7 @@ import Rebirth from "../../Assests/Rebirth_logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { formValidation } from "../Providers/Validation";
+import { instance } from "../API";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -22,10 +23,18 @@ const LoginForm = () => {
           password: "",
         }}
         validationSchema={formValidation}
-        onSubmit={(values) => {
-          console.log("submitted", values);
-          sessionStorage.setItem("token", true);
-          navigate("/");
+        onSubmit={async (values) => {
+          try {
+            const res = await instance.post("/auth/login", { email: values.email, password: values.password });
+            if (res.data.access_token) {
+              sessionStorage.setItem("token", res.data.access_token);
+              navigate("/");
+            } else {
+              console.log("Server Error");
+            }
+          } catch (error) {
+            alert("Invalid Login credential");
+          }
         }}>
         {({ errors, touched }) => (
           <Form className="vstack gap-4">

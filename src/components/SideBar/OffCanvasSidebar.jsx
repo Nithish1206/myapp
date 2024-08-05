@@ -17,7 +17,7 @@ function OffCanvasSidebar() {
     { Home: "/" },
     { Dashboard: "/Dashboard" },
     { "Patient List": "/PatientList" },
-    { Provider: "" },
+    { Provider: "/Providers" },
     { "Clinical Trail": "" },
     { "Patient Care Report": "" },
     { "Message Center": "" },
