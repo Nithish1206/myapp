@@ -16,7 +16,7 @@ import EditPatientDetail from "./components/Patient/EditPatient/EditPatientDetai
 import Home from "./components/Home";
 import Providers from "./components/Providers/Providers";
 import AddProviders from "./components/Providers/AddProviders";
-import ViewProviders from "./components/Providers/ViewProviders";
+import ProvidersProfile from "./components/Providers/ProvidersProfile";
 import EditProviders from "./components/Providers/EditProviders";
 import ProtectRouter from "./components/ProtectRouter/ProtectRouter";
 
@@ -53,9 +53,10 @@ const AppRouter = () => {
   const [User, setUser] = useState([details[0].value, details[2].value]);
   return (
     <Row className="vh-100 m-0 p-0 d-flex flex-nowrap">
-      <Col md={1} className="col1 p-0 m-0 w-auto">
+      <Col md={1} className="col1 p-0 m-0 w-auto sticky-top">
         <SideBar />
       </Col>
+
       <Col className="p-0 m-0">
         <Navigation name={User[0]} />
         <Routes>
@@ -72,7 +73,7 @@ const AppRouter = () => {
             />
             <Route path="/Providers" element={<Providers />} />
             <Route path="/Providers/AddProviders" element={<AddProviders />} />
-            <Route path="/Providers/ViewProvider/:id" element={<ViewProviders />} />
+            <Route path="/Providers/ProviderProfile/:id" element={<ProvidersProfile />} />
             <Route path="/Providers/EditProviders/:id" element={<EditProviders />} />
           </Route>
         </Routes>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import logo from "../../Assests/Logo.png";
-import { Spinner } from "react-bootstrap";
 import "../CSS/Login.css";
 import LoginForm from "./LoginForm";
 
@@ -21,7 +20,6 @@ const Login = () => {
             <p className="p-0 m-0 mb-2">{title.para1}</p>
             <p>{title.para2}</p>
           </div>
-          <Spinner animation="border" variant="white" role="status" className="position-absolute spinner-login" />
         </Col>
         <Col className="login-box d-flex align-item-center justify-content-center m-0 p-0">
           <LoginForm />

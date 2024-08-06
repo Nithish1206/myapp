@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
-import { listValidation } from "./Validation";
+import { listValidation } from "../Validation";
 
 const AddProviders = () => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const AddProviders = () => {
           <h4 className="text-secondary">Providers</h4>
         </Link>
         <span className="iconamoon--arrow-right-2"></span>
-        <h4>Add Providers</h4>
+        <h4 className="text-color-blue">Add Providers</h4>
       </div>
       <Row className="mt-5 m-0 p-0 d-flex justify-content-center">
         <Col lg={5} className="rounded-4 p-5 shadow-lg">
@@ -53,29 +53,38 @@ const AddProviders = () => {
             }}>
             {({ errors, touched }) => (
               <Form className="vstack gap-2">
-                <label htmlFor="title">Title</label>
+                <label htmlFor="title" className="fw-semibold">
+                  Title<span className="Asterisk">*</span>
+                </label>
                 <Field name="title" placeholder="Enter title" className="rounded border border-1 p-2 " />
                 {errors.title && touched.title ? <div className="text-danger">{errors.title}</div> : null}
 
-                <label htmlFor="title">Price</label>
+                <label htmlFor="title" className="fw-semibold">
+                  Price<span className="Asterisk">*</span>
+                </label>
                 <Field name="price" placeholder="Enter price" type="number" className="rounded border border-1 p-2 " />
                 {errors.price && touched.price ? <div className="text-danger">{errors.price}</div> : null}
 
-                <label htmlFor="title">Description</label>
+                <label htmlFor="title" className="fw-semibold">
+                  Description<span className="Asterisk">*</span>
+                </label>
                 <Field
+                  as="textarea"
                   name="description"
                   type="text"
-                  placeholder="Enter Description"
-                  className="rounded border border-1 p-2 "
+                  placeholder="Enter description"
+                  className="rounded border border-1 p-2 text-area"
                 />
                 {errors.description && touched.description ? (
                   <div className="text-danger">{errors.description}</div>
                 ) : null}
-                <button type="submit" className="border-0 rounded bg-success text-white p-2 mt-2">
-                  Submit
-                </button>
-                <div className="border-0 bg-danger text-white rounded p-2 text-center" onClick={() => handleCancel()}>
-                  Cancel
+                <div className="d-flex justify-content-end gap-3">
+                  <div className="rounded p-2 text-center on-hover cancel-btn mt-2" onClick={() => handleCancel()}>
+                    Cancel
+                  </div>
+                  <button type="submit" className="border-0 rounded text-white p-2 mt-2 submit-btn">
+                    Submit
+                  </button>
                 </div>
               </Form>
             )}

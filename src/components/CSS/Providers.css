@@ -11,3 +11,16 @@
 .break-select {
   user-select: none;
 }
+.submit-btn {
+  background-color: #51c8d3;
+}
+.cancel-btn {
+  color: #737373;
+  background-color: #e8eefe;
+}
+.text-color-blue {
+  color: #51c8d3;
+}
+.text-area {
+  height: 180px;
+}

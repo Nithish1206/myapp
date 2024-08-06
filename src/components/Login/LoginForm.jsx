@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Rebirth from "../../Assests/Rebirth_logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-import { formValidation } from "../Providers/Validation";
+import { formValidation } from "../Validation";
 import { instance } from "../API";
 
 const LoginForm = () => {
@@ -39,27 +39,31 @@ const LoginForm = () => {
         {({ errors, touched }) => (
           <Form className="vstack gap-4">
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className="fw-semibold mb-2">
+                Email<span className="Asterisk">*</span>
+              </label>
               <br />
               <Field
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Enter email address"
+                placeholder="Enter your email "
                 className="rounded border border-0 p-2 w-100 loginEmail"
               />
               {errors.email && touched.email ? <div className="error">{errors.email}</div> : null}
             </div>
 
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" className="fw-semibold mb-2">
+                Password<span className="Asterisk">*</span>
+              </label>
               <br />
               <div className="position-relative">
                 <Field
                   type={showPass ? "password" : "text"}
                   name="password"
                   id="password"
-                  placeholder="Enter password"
+                  placeholder="Enter your password"
                   className="rounded border border-0 p-2 w-100 loginPass"
                 />
                 <span
@@ -75,7 +79,7 @@ const LoginForm = () => {
             <div>
               <Field type="checkBox" id="checkBox" className="mx-1 on-hover" />
               <label htmlFor="checkBox">Remember me</label>
-              <Link className="float-end text-decoration-none FP">Forget Password ?</Link>
+              <Link className="float-end text-decoration-none FP">Forgot Password ?</Link>
             </div>
 
             <button type="submit" className="border-0 rounded p-2 loginBtn">

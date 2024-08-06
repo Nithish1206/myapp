@@ -18,9 +18,6 @@
   align-items: center;
   overflow: hidden;
 }
-.spinner-login {
-  bottom: 30px;
-}
 .solar--lock-password-linear {
   display: inline-block;
   width: 1.5rem;
@@ -54,6 +51,7 @@
 }
 .error {
   color: red;
+  font-size: 15px;
 }
 .FP {
   color: #57c9d4ff;
