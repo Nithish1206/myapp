@@ -58,43 +58,40 @@ const ViewProviders = () => {
           <Spinner animation="border" variant="success" role="status" />
         </div>
       ) : (
-        <div>
-          <div className="d-flex justify-content-center">
-            <div className="mt-4 border border-1 rounded p-3 w-75">
-              <div className="d-flex justify-content-between">
-                <h4>{providers.title}</h4>
-                <p className="fw-medium text-secondary">
-                  Updated At: {moment.utc(providers.updatedAt).local().format("DD-MM-YYYY, HH:MM A ")}
-                </p>
-              </div>
+        <div className="d-flex justify-content-center">
+          <div className="mt-4 border border-1 rounded p-3 w-75">
+            <div className="d-flex justify-content-between">
+              <h4>{providers.title}</h4>
+              <p className="fw-medium text-secondary">
+                Updated At: {moment.utc(providers.updatedAt).local().format("DD-MM-YYYY, HH:MM A ")}
+              </p>
+            </div>
 
-              <div className="mt-2">
-                <h4>Price : ${providers.price}</h4>
-              </div>
+            <div className="d-flex  gap-5 mt-5">
+              {providers.images.map((image, index) => (
+                <div key={index}>
+                  <img src={image} alt="" width={200} className="rounded" />
+                </div>
+              ))}
+            </div>
+            <div className="mt-2">
+              <h4>Price : ${providers.price}</h4>
+            </div>
+            <div className="mt-5 overflow-y-auto text-area">
+              <p>{providers.description}</p>
+            </div>
+            <div className="text-end mt-3">
+              <Link to={`/Providers/EditProviders/${parseInt(id)}`}>
+                <button className="border-0 px-3 py-1 rounded me-2 text-white submit-btn">Edit</button>
+              </Link>
 
-              <div className="d-flex gap-5 mt-5">
-                {providers.images.map((image, index) => (
-                  <div key={index}>
-                    <img src={image} alt="" width={200} className="rounded" />
-                  </div>
-                ))}
-              </div>
-              <div className="mt-5 overflow-y-auto text-area">
-                <p>{providers.description}</p>
-              </div>
-              <div className="text-end mt-3">
-                <Link to={`/Providers/EditProviders/${parseInt(id)}`}>
-                  <button className="border-0 px-3 py-1 rounded me-2 text-white submit-btn">Edit</button>
-                </Link>
-
-                <button
-                  className="border-0 px-3 py-1 rounded bg-danger text-white"
-                  onClick={() => {
-                    handleDelete(parseInt(id));
-                  }}>
-                  Delete
-                </button>
-              </div>
+              <button
+                className="border-0 px-3 py-1 rounded bg-danger text-white"
+                onClick={() => {
+                  handleDelete(parseInt(id));
+                }}>
+                Delete
+              </button>
             </div>
           </div>
         </div>
