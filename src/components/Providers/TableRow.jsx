@@ -2,10 +2,10 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { handleDelete } from "./HandledeleteProvider";
 
-export const TableRow = (filteredProviders, navigate, setProviders) =>
+export const TableRow = (filteredProviders, navigate, setProviders, itemOffset) =>
   filteredProviders.map((provide, index) => (
     <tr key={provide.id}>
-      <td>{index + 1}</td>
+      <td>{++itemOffset}</td>
       <td>{provide.id}</td>
       <td
         className="text-start on-hover"

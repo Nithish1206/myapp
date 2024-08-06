@@ -15,7 +15,7 @@ const Providers = () => {
 
   useEffect(() => {
     instance
-      .get("/products")
+      .get(`/products`)
       .then((response) => setProviders(response.data))
       .catch((e) => console.log(e));
   }, []);
@@ -55,7 +55,7 @@ const Providers = () => {
                 </th>
               </tr>
             </thead>
-            <tbody>{TableRow(currentItems, navigate, setProviders)}</tbody>
+            <tbody>{TableRow(currentItems, navigate, setProviders, itemOffset)}</tbody>
           </table>
         </div>
         <div>
