@@ -1,9 +1,9 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
-import { handleDelete } from "./HandledeleteProvider";
+import HandledeleteProvider from "./HandledeleteProvider";
 
-export const TableRow = (filteredProviders, navigate, setProviders, itemOffset) =>
-  filteredProviders.map((provide, index) => (
+export const TableRow = (currentItems, navigate, itemOffset, deleteProduct) =>
+  currentItems.map((provide) => (
     <tr key={provide.id}>
       <td>{++itemOffset}</td>
       <td>{provide.id}</td>
@@ -18,13 +18,11 @@ export const TableRow = (filteredProviders, navigate, setProviders, itemOffset) 
       <td type="date">{moment.utc(provide.updatedAt).local().format("DD-MM-YYYY, HH:MM A ")}</td>
 
       <td className=" Action text-nowrap z-0">
-        <Link
-          to={`/Providers/EditProviders/${provide.id}`}
-          className="bxs--edit outline-none me-2  bg-transparent"></Link>
+        <Link to={`/Providers/EditProviders/${provide.id}`} className="bxs--edit outline-none me-2  bg-transparent"></Link>
         <button
           className="material-symbols--delete-outline border-0 outline-none ms-2 bg-transparent"
           onClick={() => {
-            handleDelete(provide.id, setProviders, filteredProviders);
+            HandledeleteProvider(provide.id, deleteProduct);
           }}></button>
       </td>
     </tr>

@@ -3,7 +3,7 @@ import React from "react";
 import PE from "../Assests/Frame 20.png";
 import PIT from "../Assests/Frame 22.png";
 import RP from "../Assests/Frame 21.png";
-import "./CSS/Dashboard.css";
+import "../CSS/Dashboard.css";
 import { Row, Col } from "react-bootstrap";
 
 const Dashboard = () => {

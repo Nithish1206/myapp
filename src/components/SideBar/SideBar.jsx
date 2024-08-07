@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../Assests/frame1_logo.png";
-import "../CSS/sidebar.css";
+import "../../CSS/sidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -17,10 +17,10 @@ const SideBar = () => {
   return (
     <div className="sideLogoBar d-none d-md-flex m-0 p-0 px-3 px-lg-4">
       <div className="d-flex flex-column h-75 justify-content-start align-items-center gap-5 mt-3">
-        <Link to="/Login">
+        <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-        <Link to="/">
+        <Link to="/Home">
           <Icon
             icon="lucide:layout-list"
             width="1.8rem"

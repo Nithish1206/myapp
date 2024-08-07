@@ -1,27 +1,16 @@
 import { Formik, Form, Field } from "formik";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Row, Col, Spinner } from "react-bootstrap";
-import { instance } from "../API";
 import { listValidation } from "../Validation";
+import { useGetProductQuery, useEditProductMutation } from "../service/apiSlice";
 
 const EditProviders = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [providers, setProviders] = useState();
-
-  useEffect(() => {
-    const fetchProviders = async () => {
-      await instance
-        .get(`/Products/${id}`)
-        .then((response) => {
-          setProviders(response.data);
-        })
-        .catch((e) => console.log(e));
-    };
-    fetchProviders();
-  }, [id]);
+  const { data: providers, isLoading, error, isError } = useGetProductQuery(id);
+  const [editProduct] = useEditProductMutation();
 
   ////handleCancel
   const handleCancel = () => {
@@ -37,10 +26,11 @@ const EditProviders = () => {
         <span className="iconamoon--arrow-right-2"></span>
         <h4 className="text-color-blue">Edit Provider</h4>
       </div>
-      {!providers ? (
+      {isError && <div>Error : {error}</div>}
+      {isLoading ? (
         <div className="d-flex align-items-center justify-content-center mt-5 pt-5">
           <p className="text-center fs-3 p-0 m-0 me-2">Loading </p>
-          <Spinner animation="border" variant="success" role="status" />
+          <Spinner animation="border" variant="none" role="status" />
         </div>
       ) : (
         <div className="m-3 m-md-5">
@@ -48,13 +38,16 @@ const EditProviders = () => {
             <Col lg={5} className="rounded-4 p-5 shadow-lg">
               <Formik
                 initialValues={{
+                  id: id,
                   title: providers.title || "",
                   price: providers.price || "",
                   description: providers.description || "",
                 }}
                 validationSchema={listValidation}
                 onSubmit={async (values) => {
-                  await instance.put(`/products/${id}`, values);
+                  console.log(values);
+
+                  await editProduct(values);
                   navigate("/Providers");
                 }}>
                 {({ errors, touched }) => (
@@ -68,12 +61,7 @@ const EditProviders = () => {
                     <label htmlFor="title" className="fw-semibold">
                       Price<span className="Asterisk">*</span>
                     </label>
-                    <Field
-                      name="price"
-                      placeholder="Enter price"
-                      type="number"
-                      className="rounded border border-1 p-2 "
-                    />
+                    <Field name="price" placeholder="Enter price" type="number" className="rounded border border-1 p-2 " />
                     {errors.price && touched.price ? <div className="text-danger">{errors.price}</div> : null}
 
                     <label htmlFor="title" className="fw-semibold">
@@ -86,9 +74,7 @@ const EditProviders = () => {
                       placeholder="Enter Description"
                       className="rounded border border-1 p-2 text-area"
                     />
-                    {errors.description && touched.description ? (
-                      <div className="text-danger">{errors.description}</div>
-                    ) : null}
+                    {errors.description && touched.description ? <div className="text-danger">{errors.description}</div> : null}
                     <div className="d-flex justify-content-end gap-3">
                       <div className="rounded p-2 text-center on-hover cancel-btn mt-2" onClick={() => handleCancel()}>
                         Cancel

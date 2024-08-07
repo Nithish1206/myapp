@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS/PatientList.css";
+import "../../CSS/PatientList.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import Swal from "sweetalert2";
@@ -18,9 +18,7 @@ const PatientList = () => {
 
         <td className=" Action text-center text-nowrap">
           <button className="bxs--edit border-0 outline-none me-1" onClick={() => handleEdit(list.Id)}></button>
-          <button
-            className="material-symbols--delete-outline border-0 outline-none ms-1"
-            onClick={() => handleDelete(list.Id)}></button>
+          <button className="material-symbols--delete-outline border-0 outline-none ms-1" onClick={() => handleDelete(list.Id)}></button>
         </td>
       </tr>
     ));

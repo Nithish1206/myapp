@@ -1,6 +1,6 @@
 .login-page {
   background: linear-gradient(to bottom right, rgba(87, 201, 212, 0.897) 0%, rgba(0, 0, 0, 0.801) 40%),
-    url("../../Assests/login-bg.jpg");
+    url("../Assests/login-bg.jpg");
   height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
@@ -9,6 +9,7 @@
   margin: 0;
   padding: 0;
 }
+
 .login-box {
   padding: 0;
   margin: 0;
@@ -18,6 +19,7 @@
   align-items: center;
   overflow: hidden;
 }
+
 .solar--lock-password-linear {
   display: inline-block;
   width: 1.5rem;
@@ -26,6 +28,7 @@
   background-size: 100% 100%;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%239c9c9c'%3E%3Cpath stroke-width='1' d='M2 16c0-2.828 0-4.243.879-5.121C3.757 10 5.172 10 8 10h8c2.828 0 4.243 0 5.121.879C22 11.757 22 13.172 22 16c0 2.828 0 4.243-.879 5.121C20.243 22 18.828 22 16 22H8c-2.828 0-4.243 0-5.121-.879C2 20.243 2 18.828 2 16Z'/%3E%3Cpath stroke-linecap='round' stroke-width='1' d='M6 10V8a6 6 0 1 1 12 0v2'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M8 16h.009m3.982 0H12m3.991 0H16'/%3E%3C/g%3E%3C/svg%3E");
 }
+
 .solar--lock-password-unlocked-linear {
   display: inline-block;
   width: 1.5rem;
@@ -34,25 +37,31 @@
   background-size: 100% 100%;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23737373'%3E%3Cpath stroke-width='1.65' d='M2 16c0-2.828 0-4.243.879-5.121C3.757 10 5.172 10 8 10h8c2.828 0 4.243 0 5.121.879C22 11.757 22 13.172 22 16c0 2.828 0 4.243-.879 5.121C20.243 22 18.828 22 16 22H8c-2.828 0-4.243 0-5.121-.879C2 20.243 2 18.828 2 16Z'/%3E%3Cpath stroke-linecap='round' stroke-width='1.65' d='M6 10V8a6 6 0 0 1 11.811-1.5'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.3' d='M8 16h.009m3.982 0H12m3.991 0H16'/%3E%3C/g%3E%3C/svg%3E");
 }
+
 .passLock {
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
 }
+
 .loginPass {
   background-color: rgb(237, 243, 247);
 }
+
 .loginEmail {
   background-color: rgb(237, 243, 247);
 }
+
 .loginBtn {
   background-color: #57c9d4ff !important;
   color: white;
 }
+
 .error {
   color: red;
   font-size: 15px;
 }
+
 .FP {
   color: #57c9d4ff;
 }

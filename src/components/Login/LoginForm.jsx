@@ -3,9 +3,10 @@ import Rebirth from "../../Assests/Rebirth_logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { formValidation } from "../Validation";
-import { instance } from "../API";
+import { useAuthMutation } from "../service/apiSlice";
 
 const LoginForm = () => {
+  const [auth] = useAuthMutation();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(true);
   const handleShow = () => {
@@ -25,10 +26,11 @@ const LoginForm = () => {
         validationSchema={formValidation}
         onSubmit={async (values) => {
           try {
-            const res = await instance.post("/auth/login", { email: values.email, password: values.password });
+            const res = await auth({ email: values.email, password: values.password });
+            console.log(auth({ email: values.email, password: values.password }));
             if (res.data.access_token) {
               sessionStorage.setItem("token", res.data.access_token);
-              navigate("/");
+              navigate("/Home");
             } else {
               console.log("Server Error");
             }
@@ -43,13 +45,7 @@ const LoginForm = () => {
                 Email<span className="Asterisk">*</span>
               </label>
               <br />
-              <Field
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Enter your email "
-                className="rounded border border-0 p-2 w-100 loginEmail"
-              />
+              <Field type="email" name="email" id="email" placeholder="Enter your email " className="rounded border border-0 p-2 w-100 loginEmail" />
               {errors.email && touched.email ? <div className="error">{errors.email}</div> : null}
             </div>
 
@@ -67,9 +63,7 @@ const LoginForm = () => {
                   className="rounded border border-0 p-2 w-100 loginPass"
                 />
                 <span
-                  className={`${
-                    showPass ? "solar--lock-password-linear" : "solar--lock-password-unlocked-linear"
-                  } position-absolute passLock`}
+                  className={`${showPass ? "solar--lock-password-linear" : "solar--lock-password-unlocked-linear"} position-absolute passLock`}
                   onClick={() => handleShow()}></span>
               </div>
 

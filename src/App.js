@@ -18,7 +18,7 @@ import Providers from "./components/Providers/Providers";
 import AddProviders from "./components/Providers/AddProviders";
 import ProvidersProfile from "./components/Providers/ProvidersProfile";
 import EditProviders from "./components/Providers/EditProviders";
-import ProtectRouter from "./components/ProtectRouter/ProtectRouter";
+import PrivateRouter from "./components/PrivateRouter/PrivateRouter";
 
 function App() {
   const storedData = JSON.parse(localStorage.getItem("PatientData"));
@@ -31,7 +31,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="*" element={<AppRouter />} />
       </Routes>
     </BrowserRouter>
@@ -60,17 +60,14 @@ const AppRouter = () => {
       <Col className="p-0 m-0">
         <Navigation name={User[0]} />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route element={<ProtectRouter />}>
+          <Route path="/Home" element={<Home />} />
+          <Route element={<PrivateRouter />}>
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/PatientList" element={<PatientList />} />
             <Route path="PatientList/PatientProfile/:id" element={<PatientProfile />} />
             <Route path="/PatientList/AddPatient" element={<AddPatient />} />
             <Route path="/PatientList/EditProfile/:id" element={<EditPatientDetail />} />
-            <Route
-              path="/Profile"
-              element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />}
-            />
+            <Route path="/Profile" element={<Profile User={User} setUser={setUser} details={details} setDetails={setDetails} />} />
             <Route path="/Providers" element={<Providers />} />
             <Route path="/Providers/AddProviders" element={<AddProviders />} />
             <Route path="/Providers/ProviderProfile/:id" element={<ProvidersProfile />} />

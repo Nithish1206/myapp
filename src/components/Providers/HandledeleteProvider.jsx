@@ -1,7 +1,6 @@
 import Swal from "sweetalert2";
-import { instance } from "../API";
 
-export const handleDelete = (id, setProviders, filteredProviders) => {
+const HandledeleteProvider = (id, deleteProduct) => {
   Swal.fire({
     title: "Are you sure?",
     text: "You want to Delete this!",
@@ -17,13 +16,8 @@ export const handleDelete = (id, setProviders, filteredProviders) => {
         text: "Your file has been deleted.",
         icon: "success",
       });
-      instance
-        .delete(`/products/${id}`)
-        .then((response) => {
-          console.log(response.data);
-          setProviders(filteredProviders.filter((provider) => provider.id !== id));
-        })
-        .catch((e) => console.log(e));
+      deleteProduct(id);
     }
   });
 };
+export default HandledeleteProvider;

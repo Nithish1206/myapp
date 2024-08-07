@@ -13,8 +13,8 @@ function OffCanvasSidebar() {
   };
 
   const menuList = [
-    { Login: "/Login" },
-    { Home: "/" },
+    { Login: "/" },
+    { Home: "/Home" },
     { Dashboard: "/Dashboard" },
     { "Patient List": "/PatientList" },
     { Provider: "/Providers" },

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../CSS/AddPatient.css";
+import "../../../CSS/AddPatient.css";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";

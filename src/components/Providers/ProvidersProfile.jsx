@@ -1,24 +1,17 @@
-import React, { useEffect } from "react";
-import { instance } from "../API";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import Swal from "sweetalert2";
+import { useGetProductQuery, useDeleteProductMutation } from "../service/apiSlice";
 
 const ViewProviders = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [providers, setProviders] = useState([]);
 
-  ///useEffect
-  useEffect(() => {
-    instance
-      .get(`/products/${parseInt(id)}`)
-      .then((response) => setProviders(response.data))
-      .catch((e) => console.log(e));
-  }, [id]);
+  const { data: providers, isLoading, error, isError } = useGetProductQuery(id);
+  const [deleteProduct] = useDeleteProductMutation();
 
   ////handleDelete
   const handleDelete = (id) => {
@@ -37,7 +30,7 @@ const ViewProviders = () => {
           text: "Your file has been deleted.",
           icon: "success",
         });
-        instance.delete(`/products/${id}`);
+        deleteProduct(id);
         navigate("/Providers");
       }
     });
@@ -52,7 +45,8 @@ const ViewProviders = () => {
         <span className="iconamoon--arrow-right-2"></span>
         <h4 className="text-color-blue">Provider Profile</h4>
       </div>
-      {providers.length === 0 ? (
+      {isError && <div>{error}</div>}
+      {isLoading ? (
         <div className="d-flex align-items-center justify-content-center mt-5 pt-5">
           <p className="text-center fs-3 p-0 m-0 me-2">Loading </p>
           <Spinner animation="border" variant="success" role="status" />
@@ -62,19 +56,17 @@ const ViewProviders = () => {
           <div className="mt-4 border border-1 rounded p-3 w-75">
             <div className="d-flex justify-content-between">
               <h4>{providers.title}</h4>
-              <p className="fw-medium text-secondary">
-                Updated At: {moment.utc(providers.updatedAt).local().format("DD-MM-YYYY, HH:MM A ")}
-              </p>
+              <p className="fw-medium text-secondary">Updated At: {moment.utc(providers.updatedAt).local().format("DD-MM-YYYY, HH:MM A ")}</p>
             </div>
 
-            <div className="d-flex  gap-5 mt-5">
+            <div className="d-flex  gap-5">
               {providers.images.map((image, index) => (
                 <div key={index}>
-                  <img src={image} alt="" width={200} className="rounded" />
+                  <img src={image} alt="" width={200} className="rounded mt-5" />
                 </div>
               ))}
             </div>
-            <div className="mt-2">
+            <div className="mt-3">
               <h4>Price : ${providers.price}</h4>
             </div>
             <div className="mt-5 overflow-y-auto text-area">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CSS/Profile.css";
+import "../CSS/Profile.css";
 import { Row, Col } from "react-bootstrap";
 
 import profilePic from "../Assests/doc.jpg";
@@ -62,12 +62,7 @@ const Profile = ({ User, setUser, details, setDetails }) => {
             </div>
           </div>
           <div className="d-flex align-items-center pe-3 m-0 p-0 ">
-            <p
-              className={`p-2 rounded-3 m-0 p-0 mt-2 mt-md-0 ${
-                status === "Active" ? "ActiveStatus" : "InActiveStatus"
-              }`}>
-              {status}
-            </p>
+            <p className={`p-2 rounded-3 m-0 p-0 mt-2 mt-md-0 ${status === "Active" ? "ActiveStatus" : "InActiveStatus"}`}>{status}</p>
           </div>
         </div>
       </Row>

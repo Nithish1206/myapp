@@ -2,19 +2,20 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
-import axios from "axios";
 import { Formik, Form, Field } from "formik";
 import { listValidation } from "../Validation";
+import { useAddProductMutation } from "../service/apiSlice";
 
 const AddProviders = () => {
   const navigate = useNavigate();
+  const [addProduct] = useAddProductMutation();
 
   const handleCancel = () => {
     navigate("/Providers");
   };
 
   const handleSave = async (values) => {
-    await axios.post("https://api.escuelajs.co/api/v1/products", values).then((response) => console.log(response));
+    await addProduct(values);
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -75,9 +76,7 @@ const AddProviders = () => {
                   placeholder="Enter description"
                   className="rounded border border-1 p-2 text-area"
                 />
-                {errors.description && touched.description ? (
-                  <div className="text-danger">{errors.description}</div>
-                ) : null}
+                {errors.description && touched.description ? <div className="text-danger">{errors.description}</div> : null}
                 <div className="d-flex justify-content-end gap-3">
                   <div className="rounded p-2 text-center on-hover cancel-btn mt-2" onClick={() => handleCancel()}>
                     Cancel
