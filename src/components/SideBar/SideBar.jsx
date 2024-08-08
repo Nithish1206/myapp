@@ -20,7 +20,6 @@ const SideBar = () => {
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-
         {sidebarItems.map((item, index) => (
           <Link key={index} to={item.to}>
             <Icon

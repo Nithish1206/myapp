@@ -5,8 +5,8 @@ import { boxContent } from "../constant/constant";
 
 const Dashboard = () => {
   function box(boxContent) {
-    const content = boxContent.map((input) => (
-      <Col md={12} lg={3} className="m-0 p-0">
+    const content = boxContent.map((input, index) => (
+      <Col md={12} lg={3} className="m-0 p-0" key={index}>
         <div className="boxcss d-flex justify-content-between align-items-center rounded-4 p-3 ">
           <div>
             <h4>{input.title}</h4>

@@ -18,7 +18,7 @@ import Providers from "./components/providers/Providers";
 import AddProviders from "./components/providers/AddProviders";
 import ProvidersProfile from "./components/providers/ProvidersProfile";
 import EditProviders from "./components/providers/EditProviders";
-import PrivateRouter from "./components/private-router/PrivateRouter";
+import { PrivateLogin, PrivateRouter } from "./components/private-router/PrivateRouter";
 import { profileData } from "./constant/constant";
 
 function App() {
@@ -30,7 +30,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route element={<PrivateLogin />}>
+          <Route path="/" element={<Login />} />
+        </Route>
         <Route path="*" element={<AppRouter />} />
       </Routes>
     </BrowserRouter>
