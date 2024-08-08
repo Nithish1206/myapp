@@ -1,5 +1,5 @@
 import React from "react";
-import "../../CSS/PatientList.css";
+import "../../css/PatientList.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import Swal from "sweetalert2";

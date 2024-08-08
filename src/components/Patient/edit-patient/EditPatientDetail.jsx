@@ -1,12 +1,17 @@
 import React from "react";
-import "../../../CSS/AddPatient.css";
+import "../../../css/AddPatient.css";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import AddPatientDemographic from "./AddPatientDemographic";
 import { useState } from "react";
-import AddPatientIssueDetail from "./AddPatientIssueDetail";
+import EditPatientDemographic from "./EditPatientDemographic";
+import EditPatientIssue from "./EditPatientIssue";
+import { useParams } from "react-router-dom";
 
 const AddPatient = () => {
+  const { id } = useParams();
+  const AllPerson = JSON.parse(localStorage.getItem("PatientData"));
+  const person = AllPerson.find((al) => al.Id === parseInt(id));
+
   const [showComponent, setShowComponent] = useState("A");
   return (
     <div className="m-3 m-md-5">
@@ -15,7 +20,7 @@ const AddPatient = () => {
           <h4 className="text-secondary">Patients List</h4>
         </Link>
         <span className="iconamoon--arrow-right-2"></span>
-        <h4>Add Patients</h4>
+        <h4>{person.FirstName + " " + person.LastName}</h4>
       </div>
       <Row className="mt-4 m-0 p-0">
         <Col
@@ -29,8 +34,8 @@ const AddPatient = () => {
           <h4 onClick={() => setShowComponent("B")}>Patient issue Details</h4>
         </Col>
         <div>
-          {showComponent === "A" && <AddPatientDemographic setShow={setShowComponent} />}
-          {showComponent === "B" && <AddPatientIssueDetail />}
+          {showComponent === "A" && <EditPatientDemographic setShow={setShowComponent} person={person} />}
+          {showComponent === "B" && <EditPatientIssue />}
         </div>
       </Row>
     </div>

@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link, useNavigate } from "react-router-dom";
-import { handleLogout } from "../Logout/Logout";
+import { handleLogout } from "../logout/Logout";
 
 function OffCanvasSidebar() {
   const navigate = useNavigate();

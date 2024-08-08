@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import logo from "../../Assests/Logo.png";
-import "../../CSS/Login.css";
+import logo from "../../assests/Logo.png";
+import "../../css/Login.css";
 import LoginForm from "./LoginForm";
 
 const Login = () => {

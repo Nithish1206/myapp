@@ -1,10 +1,10 @@
 import React from "react";
-import bell from "../Assests/bell.png";
-import profilePic from "../Assests/doc.jpg";
+import bell from "../assests/bell.png";
+import profilePic from "../assests/doc.jpg";
 import { Dropdown } from "react-bootstrap";
-import "../CSS/Navigation.css";
+import "../css/Navigation.css";
 import { Link } from "react-router-dom";
-import OffCanvasSidebar from "./SideBar/OffCanvasSidebar";
+import OffCanvasSidebar from "./sidebar/OffCanvasSidebar";
 
 const Navigation = ({ name }) => {
   const profile = {

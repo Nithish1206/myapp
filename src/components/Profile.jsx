@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import "../CSS/Profile.css";
+import "../css/Profile.css";
 import { Row, Col } from "react-bootstrap";
-
-import profilePic from "../Assests/doc.jpg";
+import profilePic from "../assests/doc.jpg";
 
 const Profile = ({ User, setUser, details, setDetails }) => {
   const [edit, setEdit] = useState(true);

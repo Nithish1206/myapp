@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import pic from "../../Assests/doc.jpg";
-import "../../CSS/PatientProfile.css";
+import pic from "../../assests/doc.jpg";
+import "../../css/PatientProfile.css";
 import PatientProfileDetails from "./PatientProfileDetails";
 
 const PatientProfile = () => {

@@ -1,10 +1,10 @@
 import React from "react";
-import logo from "../../Assests/frame1_logo.png";
-import "../../CSS/sidebar.css";
+import logo from "../../assests/frame1_logo.png";
+import "../../css/Sidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { handleLogout } from "../Logout/Logout";
+import { handleLogout } from "../logout/Logout";
 
 const SideBar = () => {
   const navigate = useNavigate();

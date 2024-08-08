@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
-import "../../CSS/Providers.css";
+import "../../css/Providers.css";
 import { useGetAllProductsQuery, useDeleteProductMutation } from "../service/apiSlice";
 import { PaginatedItems } from "./Pagination";
 

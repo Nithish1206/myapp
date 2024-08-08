@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Rebirth from "../../Assests/Rebirth_logo.png";
+import Rebirth from "../../assests/Rebirth_logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { formValidation } from "../Validation";
