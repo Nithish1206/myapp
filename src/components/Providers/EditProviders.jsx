@@ -6,6 +6,7 @@ import { listValidation } from "../Validation";
 import { useGetProductQuery, useEditProductMutation } from "../service/apiSlice";
 
 const EditProviders = () => {
+  const isActive = sessionStorage.getItem("ProfileisActive");
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -14,7 +15,7 @@ const EditProviders = () => {
 
   ////handleCancel
   const handleCancel = () => {
-    navigate("/Providers");
+    isActive === "true" ? navigate(`/Providers/ProviderProfile/${id}`) : navigate("/Providers");
   };
 
   return (
@@ -24,6 +25,16 @@ const EditProviders = () => {
           <h4 className="text-secondary">Providers</h4>
         </Link>
         <span className="iconamoon--arrow-right-2"></span>
+
+        {isActive === "true" && (
+          <div className="d-flex flex-nowrap">
+            <Link to={`/Providers/ProviderProfile/${id}`} className="text-decoration-none ">
+              <h4 className="text-secondary">Provider Profile</h4>
+            </Link>
+            <span className="iconamoon--arrow-right-2"></span>
+          </div>
+        )}
+
         <h4 className="text-color-blue">Edit Provider</h4>
       </div>
       {isError && <div>Error : {error}</div>}

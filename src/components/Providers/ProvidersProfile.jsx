@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useGetProductQuery, useDeleteProductMutation } from "../service/apiSlice";
 
 const ViewProviders = () => {
+  sessionStorage.setItem("ProfileisActive", true);
   const navigate = useNavigate();
   const { id } = useParams();
 
