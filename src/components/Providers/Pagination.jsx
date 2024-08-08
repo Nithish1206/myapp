@@ -5,13 +5,18 @@ import { useState } from "react";
 
 export const PaginatedItems = ({ itemsPerPage, filteredProviders, deleteProduct }) => {
   const navigate = useNavigate();
+  const CP = parseInt(sessionStorage.getItem("currentPage"), 10);
+  const currentPage = CP || 0;
+
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = filteredProviders.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(filteredProviders.length / itemsPerPage);
+
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % filteredProviders.length;
     setItemOffset(newOffset);
+    sessionStorage.setItem("currentPage", event.selected);
   };
 
   return (
@@ -38,25 +43,28 @@ export const PaginatedItems = ({ itemsPerPage, filteredProviders, deleteProduct 
         </table>
       </div>
       <div>
-        <ReactPaginate
-          breakLabel="..."
-          breakClassName="list-group"
-          breakLinkClassName="text-decoration-none text-dark break-select"
-          nextLabel="next >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel="< previous"
-          renderOnZeroPageCount={null}
-          className="d-flex justify-content-center align-items-center  mt-5 gap-3"
-          previousClassName=" list-group"
-          pageClassName="list-group d-none d-md-block"
-          nextClassName="list-group"
-          pageLinkClassName="text-decoration-none  list-group-item hover"
-          previousLinkClassName="text-decoration-none  list-group-item hover text-nowrap"
-          nextLinkClassName="text-decoration-none list-group-item hover text-nowrap"
-          activeLinkClassName="Active-Class"
-        />
+        {pageCount > 0 && (
+          <ReactPaginate
+            breakLabel="..."
+            breakClassName="list-group"
+            breakLinkClassName="text-decoration-none text-dark break-select"
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+            className="d-flex justify-content-center align-items-center  mt-5 gap-3"
+            previousClassName=" list-group"
+            pageClassName="list-group d-none d-md-block"
+            nextClassName="list-group"
+            pageLinkClassName="text-decoration-none  list-group-item hover"
+            previousLinkClassName="text-decoration-none  list-group-item hover text-nowrap"
+            nextLinkClassName="text-decoration-none list-group-item hover text-nowrap"
+            activeLinkClassName="Active-Class"
+            initialPage={currentPage}
+          />
+        )}
       </div>
     </>
   );

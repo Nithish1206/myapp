@@ -1,29 +1,10 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
+import { demographicdetails } from "../../../constant/constant";
 
 const AddPatientDemographic = ({ setShow }) => {
-  const [details, setDetails] = useState([
-    { label: "First Name", Placeholder: "Enter first Name", value: "", type: "text" },
-    { label: "Last Name", Placeholder: "Enter last Name", value: "", type: "text" },
-    { label: "Email Address", Placeholder: "Enter email address", value: "", type: "email" },
-    {
-      label: "Emergency Contact Number",
-      Placeholder: "Enter emergency contact number",
-      value: "",
-      type: "text",
-    },
-    { label: "DOB", Placeholder: "Enter dob", value: "", type: "date" },
-    {
-      label: "Consumption Period",
-      Placeholder: "Enter Consumption Period",
-      value: "",
-      type: "text",
-    },
-    { label: "Onboard Date", Placeholder: "Enter onboard date", value: "", type: "date" },
-    { label: "Training", Placeholder: "Select training", value: "Enrolled", type: "text" },
-    { label: "Assigned To", placeholder: "Assigned to", value: "Bruce", type: "text" },
-  ]);
+  const [details, setDetails] = useState(demographicdetails);
 
   const AddPatientDetails = (details) => {
     const List = details.map((detail, index) => (

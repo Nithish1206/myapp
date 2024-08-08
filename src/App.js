@@ -19,13 +19,12 @@ import AddProviders from "./components/providers/AddProviders";
 import ProvidersProfile from "./components/providers/ProvidersProfile";
 import EditProviders from "./components/providers/EditProviders";
 import PrivateRouter from "./components/private-router/PrivateRouter";
+import { profileData } from "./constant/constant";
 
 function App() {
   const storedData = JSON.parse(localStorage.getItem("PatientData"));
   if (!storedData) {
-    console.log("Session Stroage initial Update...");
     localStorage.setItem("PatientData", JSON.stringify(Records));
-    console.log("local storage updated");
   }
 
   return (
@@ -38,18 +37,7 @@ function App() {
   );
 }
 const AppRouter = () => {
-  const [details, setDetails] = useState([
-    { label: "First Name", value: "Jessica", type: "text" },
-    { label: "Last Name", value: "Mark", type: "text" },
-    { label: "Email Address", value: "jessica@gmail.com", type: "email" },
-    { label: "Gender", value: "Female", type: "text" },
-    { label: "DOB", value: "2003-06-12", type: "date" },
-    { label: "Phone Number", value: "+1 (201) 874 8486", type: "text" },
-    { label: "Address", value: "1027 Edgardo", type: "text" },
-    { label: "City", value: "Aelington", type: "text" },
-    { label: "State", value: "virginia", type: "text" },
-    { label: "Postal Code", value: "22201", type: "text" },
-  ]);
+  const [details, setDetails] = useState(profileData);
   const [User, setUser] = useState([details[0].value, details[2].value]);
   return (
     <Row className="vh-100 m-0 p-0 d-flex flex-nowrap">

@@ -3,13 +3,9 @@ import { Row, Col } from "react-bootstrap";
 import logo from "../../assests/Logo.png";
 import "../../css/Login.css";
 import LoginForm from "./LoginForm";
+import { title } from "../../constant/constant";
 
 const Login = () => {
-  const title = {
-    heading: "Empowering healthcare professionals",
-    para1: "Empowering healthcare Professionals to deliver",
-    para2: "exceptional care while enhancing patient outcomes",
-  };
   return (
     <div className="login-page">
       <Row className="m-0 p-0">

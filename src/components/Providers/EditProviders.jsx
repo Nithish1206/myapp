@@ -10,7 +10,7 @@ const EditProviders = () => {
   const { id } = useParams();
 
   const { data: providers, isLoading, error, isError } = useGetProductQuery(id);
-  const [editProduct] = useEditProductMutation();
+  const [editProduct, { isLoading: fetching }] = useEditProductMutation();
 
   ////handleCancel
   const handleCancel = () => {
@@ -30,7 +30,7 @@ const EditProviders = () => {
       {isLoading ? (
         <div className="d-flex align-items-center justify-content-center mt-5 pt-5">
           <p className="text-center fs-3 p-0 m-0 me-2">Loading </p>
-          <Spinner animation="border" variant="none" role="status" />
+          <Spinner animation="border" variant="info" role="status" />
         </div>
       ) : (
         <div className="m-3 m-md-5">
@@ -80,7 +80,7 @@ const EditProviders = () => {
                         Cancel
                       </div>
                       <button type="submit" className="border-0 rounded text-white p-2 mt-2 submit-btn">
-                        Submit
+                        {fetching ? "Updating..." : "Submit"}
                       </button>
                     </div>
                   </Form>

@@ -2,16 +2,16 @@ import React from "react";
 import logo from "../../assests/frame1_logo.png";
 import "../../css/Sidebar.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { handleLogout } from "../logout/Logout";
+import { sidebarItems } from "../../constant/constant";
 
 const SideBar = () => {
   const navigate = useNavigate();
-  const [activeIndex, setActiveIndex] = useState(0);
+  const activeIndex = parseInt(sessionStorage.getItem("activeIndex")) || 0;
 
   const handleItemClick = (index) => {
-    setActiveIndex(index);
+    sessionStorage.setItem("activeIndex", index);
   };
 
   return (
@@ -20,70 +20,20 @@ const SideBar = () => {
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-        <Link to="/Home">
-          <Icon
-            icon="lucide:layout-list"
-            width="1.8rem"
-            height="1.8rem"
-            className={`text-secondary sidebar-item ${activeIndex === 0 ? "active" : ""}`}
-            onClick={() => handleItemClick(0)}
-          />
-        </Link>
-        <Link to="/Dashboard">
-          <Icon
-            icon="radix-icons:dashboard"
-            width="1.8rem"
-            height="1.8rem"
-            className={`text-secondary sidebar-item ${activeIndex === 1 ? "active" : ""}`}
-            onClick={() => handleItemClick(1)}
-          />
-        </Link>
-        <Link to="/PatientList">
-          <Icon
-            icon="solar:user-circle-linear"
-            width="1.8rem"
-            height="1.8rem"
-            className={`text-secondary sidebar-item ${activeIndex === 2 ? "active" : ""}`}
-            onClick={() => handleItemClick(2)}
-          />
-        </Link>
-        <Link to="/Providers">
-          <Icon
-            icon="fluent:people-16-regular"
-            width="1.8rem"
-            height="1.8rem"
-            className={`text-secondary sidebar-item ${activeIndex === 3 ? "active" : ""}`}
-            onClick={() => handleItemClick(3)}
-          />
-        </Link>
-        <Link>
-          <Icon
-            icon="mage:home-plus"
-            width="1.8rem"
-            height="1.8rem"
-            className={`text-secondary sidebar-item ${activeIndex === 4 ? "active" : ""}`}
-            onClick={() => handleItemClick(4)}
-          />
-        </Link>
-        <Link>
-          <Icon
-            icon="carbon:report"
-            width="1.8rem"
-            height="1.8rem"
-            className={`text-secondary sidebar-item ${activeIndex === 5 ? "active" : ""}`}
-            onClick={() => handleItemClick(5)}
-          />
-        </Link>
-        <Link>
-          <Icon
-            icon="mage:message-dots"
-            width="1.8rem"
-            height="1.8rem"
-            className={`text-secondary sidebar-item ${activeIndex === 6 ? "active" : ""}`}
-            onClick={() => handleItemClick(6)}
-          />
-        </Link>
+
+        {sidebarItems.map((item, index) => (
+          <Link key={index} to={item.to}>
+            <Icon
+              icon={item.icon}
+              width="1.8rem"
+              height="1.8rem"
+              className={`text-secondary sidebar-item ${activeIndex === item.index ? "active" : ""}`}
+              onClick={() => handleItemClick(item.index)}
+            />
+          </Link>
+        ))}
       </div>
+
       <div className="pb-5 d-flex justify-content-center pe-2">
         <button
           onClick={() => {

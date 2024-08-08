@@ -8,7 +8,7 @@ import { useAddProductMutation } from "../service/apiSlice";
 
 const AddProviders = () => {
   const navigate = useNavigate();
-  const [addProduct] = useAddProductMutation();
+  const [addProduct, { isLoading }] = useAddProductMutation();
 
   const handleCancel = () => {
     navigate("/Providers");
@@ -24,7 +24,7 @@ const AddProviders = () => {
     });
     Toast.fire({
       icon: "success",
-      title: "Saved successfully",
+      title: "Added successfully",
     });
     navigate("/Providers");
   };
@@ -82,7 +82,7 @@ const AddProviders = () => {
                     Cancel
                   </div>
                   <button type="submit" className="border-0 rounded text-white p-2 mt-2 submit-btn">
-                    Submit
+                    {isLoading ? "Adding..." : "Submit"}
                   </button>
                 </div>
               </Form>

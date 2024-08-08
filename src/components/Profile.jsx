@@ -5,8 +5,8 @@ import profilePic from "../assests/doc.jpg";
 
 const Profile = ({ User, setUser, details, setDetails }) => {
   const [edit, setEdit] = useState(true);
-  ///Handle Status
 
+  ///Handle Status
   const [status, setStatus] = useState("Active");
   const handleStatus = (e) => {
     setStatus(e.target.value);

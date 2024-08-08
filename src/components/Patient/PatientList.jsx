@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const PatientList = () => {
   const navigate = useNavigate();
   const patient = JSON.parse(localStorage.getItem("PatientData"));
+
   const PatientDetails = () => {
     const List = patient.map((list, index) => (
       <tr key={index}>

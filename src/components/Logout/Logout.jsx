@@ -11,7 +11,8 @@ export const handleLogout = (navigate) => {
     confirmButtonText: "Yes, Logout!",
   }).then((result) => {
     if (result.isConfirmed) {
-      sessionStorage.setItem("token", "");
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("currentPage");
       navigate("/");
     }
   });

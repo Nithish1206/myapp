@@ -1,10 +1,12 @@
-.sideLogoBar > div > img {
+.sideLogoBar>div>img {
   width: 3rem;
 }
-.sideLogoBar > div > button {
+
+.sideLogoBar>div>button {
   border: none;
   background-color: rgba(255, 255, 255, 0);
 }
+
 .sideLogoBar {
   display: flex;
   flex-direction: column;
@@ -14,6 +16,7 @@
   padding-left: 2rem;
   padding-right: 2rem;
 }
+
 .sidebar-item:hover,
 .sidebar-item.active {
   color: #51c8d3 !important;

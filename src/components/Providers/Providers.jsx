@@ -47,7 +47,7 @@ const Providers = () => {
       {isLoading ? (
         <div className="d-flex align-items-center justify-content-center mt-5 pt-5">
           <p className="text-center fs-3 p-0 m-0 me-2">Loading </p>
-          <Spinner animation="border" variant="success" role="status" />
+          <Spinner animation="border" variant="info" role="status" />
         </div>
       ) : (
         <div>

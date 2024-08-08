@@ -3,6 +3,7 @@ import { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link, useNavigate } from "react-router-dom";
 import { handleLogout } from "../logout/Logout";
+import { menuList } from "../../constant/constant";
 
 function OffCanvasSidebar() {
   const navigate = useNavigate();
@@ -12,16 +13,6 @@ function OffCanvasSidebar() {
     handleLogout(navigate);
   };
 
-  const menuList = [
-    { Login: "/" },
-    { Home: "/Home" },
-    { Dashboard: "/Dashboard" },
-    { "Patient List": "/PatientList" },
-    { Provider: "/Providers" },
-    { "Clinical Trail": "" },
-    { "Patient Care Report": "" },
-    { "Message Center": "" },
-  ];
   const handleMenu = () => {
     const list = menuList.map((menu) =>
       Object.entries(menu).map(([key, value]) => (

@@ -27,7 +27,6 @@ const LoginForm = () => {
         onSubmit={async (values) => {
           try {
             const res = await auth({ email: values.email, password: values.password });
-            console.log(auth({ email: values.email, password: values.password }));
             if (res.data.access_token) {
               sessionStorage.setItem("token", res.data.access_token);
               navigate("/Home");

@@ -22,7 +22,14 @@ const EditPatientDemographic = ({ setShow, person }) => {
           <label htmlFor={index} className="pb-2">
             {detail.label}
           </label>
-          <input type={detail.type} className="form-control shadow-none" value={detail.value} id={index} placeholder={detail.Placeholder} onChange={(e) => handleChange(e.target.value, index)} />
+          <input
+            type={detail.type}
+            className="form-control shadow-none"
+            value={detail.value}
+            id={index}
+            placeholder={detail.Placeholder}
+            onChange={(e) => handleChange(e.target.value, index)}
+          />
         </div>
       </Col>
     ));

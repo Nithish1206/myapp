@@ -49,13 +49,13 @@ const ViewProviders = () => {
       {isLoading ? (
         <div className="d-flex align-items-center justify-content-center mt-5 pt-5">
           <p className="text-center fs-3 p-0 m-0 me-2">Loading </p>
-          <Spinner animation="border" variant="success" role="status" />
+          <Spinner animation="border" variant="info" role="status" />
         </div>
       ) : (
         <div className="d-flex justify-content-center">
           <div className="mt-4 border border-1 rounded p-3 w-75">
             <div className="d-flex justify-content-between">
-              <h4>{providers.title}</h4>
+              <h3>{providers.title}</h3>
               <p className="fw-medium text-secondary">Updated At: {moment.utc(providers.updatedAt).local().format("DD-MM-YYYY, HH:MM A ")}</p>
             </div>
 
@@ -67,7 +67,7 @@ const ViewProviders = () => {
               ))}
             </div>
             <div className="mt-3">
-              <h4>Price : ${providers.price}</h4>
+              <h5 className="text-success">Price : ${providers.price}</h5>
             </div>
             <div className="mt-5 overflow-y-auto text-area">
               <p>{providers.description}</p>
