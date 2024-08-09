@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { Formik, Form, Field } from "formik";
-import { listValidation } from "../Validation";
+import { listValidation } from "../../utils/Validation";
 import { useAddProductMutation } from "../service/apiSlice";
 
 const AddProviders = () => {

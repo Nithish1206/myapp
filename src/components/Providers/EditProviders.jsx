@@ -2,7 +2,7 @@ import { Formik, Form, Field } from "formik";
 import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Row, Col, Spinner } from "react-bootstrap";
-import { listValidation } from "../Validation";
+import { listValidation } from "../../utils/Validation";
 import { useGetProductQuery, useEditProductMutation } from "../service/apiSlice";
 
 const EditProviders = () => {
