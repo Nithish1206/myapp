@@ -21,7 +21,7 @@ export const PaginatedItems = ({ itemsPerPage, filteredProviders, deleteProduct 
 
   return (
     <>
-      <div className="table-responsive  rounded-3 shadow  mt-4 m-0 p-0 border border-1">
+      <div className="table-responsive  rounded-3  mt-4 m-0 p-0 border border-1">
         <table className="table m-0 p-0 text-center table-hover">
           <thead className="sticky-top z-1">
             <tr>

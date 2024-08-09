@@ -3,10 +3,12 @@ import "../../css/PatientList.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import Swal from "sweetalert2";
+// import { useSelector } from "react-redux";
 
 const PatientList = () => {
   const navigate = useNavigate();
   const patient = JSON.parse(localStorage.getItem("PatientData"));
+  // const patient = useSelector((state) => state.patient);
 
   const PatientDetails = () => {
     const List = patient.map((list, index) => (

@@ -50,9 +50,9 @@ const EditProviders = () => {
               <Formik
                 initialValues={{
                   id: id,
-                  title: providers.title || "",
-                  price: providers.price || "",
-                  description: providers.description || "",
+                  title: providers.title,
+                  price: providers.price,
+                  description: providers.description,
                 }}
                 validationSchema={listValidation}
                 onSubmit={async (values) => {

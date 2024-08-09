@@ -43,7 +43,7 @@ const AppRouter = () => {
   const [User, setUser] = useState([details[0].value, details[2].value]);
   return (
     <Row className="vh-100 m-0 p-0 d-flex flex-nowrap">
-      <Col md={1} className="col1 p-0 m-0 w-auto sticky-top">
+      <Col md={1} className="col1 p-0 m-0 w-auto">
         <SideBar />
       </Col>
 

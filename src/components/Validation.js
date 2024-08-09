@@ -1,17 +1,17 @@
 import * as Yup from "yup";
 
 export const listValidation = Yup.object().shape({
-  title: Yup.string().min(1, "Too Short!").max(50, "Too Long!").required("*Required"),
+  title: Yup.string().min(1, "Too Short!").max(50, "Too Long!").required("*Title is required"),
   price: Yup.number()
-    .required("*Required")
+    .test("no-e", "Number cannot contain e", (value) => !value.toString().includes("e"))
+    .required("*Price is required")
     .positive()
-    .integer()
-    .test("no-e", "Number cannot contain e", (value) => !value.toString().includes("e")),
-  description: Yup.string().min(1, "Too Short!").required("*Required"),
+    .integer(),
+  description: Yup.string().min(1, "Too Short!").required("*Description is required"),
 });
 
 export const formValidation = Yup.object().shape({
-  email: Yup.string().email("Invalid Email").required("*Email is required"),
+  email: Yup.string().email("Email is invalid").required("*Email is required"),
   password: Yup.string().required("*Password is required"),
   // .min(8, "Password must be at least 8 characters")
   // .matches(/[a-z]/, "Password must contain at least one lowercase letter")

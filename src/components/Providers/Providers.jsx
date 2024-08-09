@@ -8,7 +8,6 @@ import { PaginatedItems } from "./Pagination";
 
 const Providers = () => {
   sessionStorage.setItem("ProfileisActive", false);
-  console.log(sessionStorage.getItem("ProfileisActive"));
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProviders, setFilteredProviders] = useState([]);
 
