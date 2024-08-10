@@ -3,20 +3,25 @@ import { TableRow } from "./TableRow";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export const PaginatedItems = ({ itemsPerPage, filteredProviders, deleteProduct }) => {
+interface Props{
+  itemsPerPage: number;
+  filteredProviders: string[];
+  deleteProduct:React.Dispatch<number>
+}
+
+export const PaginatedItems = ({ itemsPerPage, filteredProviders, deleteProduct }:Props) => {
   const navigate = useNavigate();
-  const CP = parseInt(sessionStorage.getItem("currentPage"), 10);
-  const currentPage = CP || 0;
+  const currentPage = parseInt(sessionStorage.getItem("currentPage")||'0');
 
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = filteredProviders.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(filteredProviders.length / itemsPerPage);
 
-  const handlePageClick = (event) => {
+  const handlePageClick = (event: { selected: number; }) => {
     const newOffset = (event.selected * itemsPerPage) % filteredProviders.length;
     setItemOffset(newOffset);
-    sessionStorage.setItem("currentPage", event.selected);
+    sessionStorage.setItem("currentPage", event.selected.toString());
   };
 
   return (

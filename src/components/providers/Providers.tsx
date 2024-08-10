@@ -7,17 +7,17 @@ import { useGetAllProductsQuery, useDeleteProductMutation } from "../service/api
 import { PaginatedItems } from "./Pagination";
 
 const Providers = () => {
-  sessionStorage.setItem("ProfileisActive", false);
+  sessionStorage.setItem("ProfileisActive", "false");
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProviders, setFilteredProviders] = useState([]);
 
   const [deleteProduct] = useDeleteProductMutation();
 
-  const { data: providers, isLoading, isSuccess, isError, error } = useGetAllProductsQuery();
+  const { data: providers, isLoading, isSuccess } = useGetAllProductsQuery("products");
 
   useEffect(() => {
     const fetchItems = () => {
-      const filtered = providers.filter((provider) => provider.title.toLowerCase().includes(searchTerm.toLowerCase()));
+      const filtered = providers.filter((provider: { title: string; }) => provider.title.toLowerCase().includes(searchTerm.toLowerCase()));
       setFilteredProviders(filtered);
     };
     isSuccess && fetchItems();
@@ -44,7 +44,6 @@ const Providers = () => {
           </Link>
         </div>
       </header>
-      {isError && <div> Error : {error}</div>}
       {isLoading ? (
         <div className="d-flex align-items-center justify-content-center mt-5 pt-5">
           <p className="text-center fs-3 p-0 m-0 me-2">Loading </p>
@@ -54,12 +53,6 @@ const Providers = () => {
         <div>
           <div className="d-none d-lg-block">
             <PaginatedItems itemsPerPage={10} filteredProviders={filteredProviders} deleteProduct={deleteProduct} />
-          </div>
-          <div className="d-none d-md-block d-lg-none">
-            <PaginatedItems itemsPerPage={7} filteredProviders={filteredProviders} deleteProduct={deleteProduct} />
-          </div>
-          <div className="d-block d-md-none">
-            <PaginatedItems itemsPerPage={5} filteredProviders={filteredProviders} deleteProduct={deleteProduct} />
           </div>
         </div>
       )}

@@ -6,16 +6,18 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import { useGetProductQuery, useDeleteProductMutation } from "../service/apiSlice";
 
-const ViewProviders = () => {
-  sessionStorage.setItem("ProfileisActive", true);
-  const navigate = useNavigate();
-  const { id } = useParams();
 
-  const { data: providers, isLoading, error, isError } = useGetProductQuery(id);
+
+const ViewProviders = () => {
+  sessionStorage.setItem("ProfileisActive", "true");
+  const navigate = useNavigate();
+  const { id }= useParams();
+
+  const { data: providers, isLoading} = useGetProductQuery(id);
   const [deleteProduct] = useDeleteProductMutation();
 
   ////handleDelete
-  const handleDelete = (id) => {
+  const handleDelete = (id:string | undefined) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You want to Delete this!",
@@ -46,7 +48,6 @@ const ViewProviders = () => {
         <span className="iconamoon--arrow-right-2"></span>
         <h4 className="text-color-blue">Provider Profile</h4>
       </div>
-      {isError && <div>{error}</div>}
       {isLoading ? (
         <div className="d-flex align-items-center justify-content-center mt-5 pt-5">
           <p className="text-center fs-3 p-0 m-0 me-2">Loading </p>
@@ -61,7 +62,7 @@ const ViewProviders = () => {
             </div>
 
             <div className="d-flex  gap-5">
-              {providers.images.map((image, index) => (
+              {providers.images.map((image:string, index:number) => (
                 <div key={index}>
                   <img src={image} alt="" width={200} className="rounded mt-5" />
                 </div>
@@ -74,14 +75,14 @@ const ViewProviders = () => {
               <p>{providers.description}</p>
             </div>
             <div className="text-end mt-3">
-              <Link to={`/Providers/EditProviders/${parseInt(id)}`}>
+              <Link to={`/Providers/EditProviders/${id}`}>
                 <button className="border-0 px-3 py-1 rounded me-2 text-white submit-btn">Edit</button>
               </Link>
 
               <button
                 className="border-0 px-3 py-1 rounded bg-danger text-white"
                 onClick={() => {
-                  handleDelete(parseInt(id));
+                  handleDelete(id);
                 }}>
                 Delete
               </button>

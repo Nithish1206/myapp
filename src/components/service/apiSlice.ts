@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "https://api.escuelajs.co/api/v1" }),
@@ -21,7 +22,6 @@ export const apiSlice = createApi({
         method: "POST",
         body: value,
       }),
-      providesTags: ["products"],
     }),
 
     addProduct: builder.mutation({
@@ -34,7 +34,7 @@ export const apiSlice = createApi({
     }),
 
     editProduct: builder.mutation({
-      query: (value, id) => ({
+      query: (value) => ({
         url: `/products/${value.id}`,
         method: "PUT",
         body: value,

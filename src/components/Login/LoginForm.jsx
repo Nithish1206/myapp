@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Rebirth from "../../assests/Rebirth_logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
-import { formValidation } from "../../utils/Validation";
+import { formSchema } from "../../utils/Validation";
 import { useAuthMutation } from "../service/apiSlice";
 
 const LoginForm = () => {
@@ -23,7 +23,7 @@ const LoginForm = () => {
           email: "",
           password: "",
         }}
-        validationSchema={formValidation}
+        validationSchema={formSchema}
         onSubmit={async (values) => {
           try {
             const res = await auth({ email: values.email, password: values.password });

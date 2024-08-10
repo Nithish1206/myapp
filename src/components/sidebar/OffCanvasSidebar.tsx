@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { handleLogout } from "../logout/Logout";
 import { menuList } from "../../constant/constant";
 
-function OffCanvasSidebar() {
+const OffCanvasSidebar:React.FC=()=>{
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleLogouttemp = () => {

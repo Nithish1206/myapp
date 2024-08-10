@@ -1,14 +1,18 @@
 import React from "react";
-import bell from "../assests/bell.png";
-import profilePic from "../assests/doc.jpg";
 import { Dropdown } from "react-bootstrap";
 import "../css/Navigation.css";
 import { Link, useNavigate } from "react-router-dom";
 import OffCanvasSidebar from "./sidebar/OffCanvasSidebar";
 import { handleLogout } from "./logout/Logout";
 
-const Navigation = ({ name }) => {
+interface Props{
+  name:string
+}
+
+const Navigation= ( {name}:Props ) => {
   const navigate = useNavigate();
+  const bell = require("../assests/bell.png");
+  const profilePic = require("../assests/doc.jpg");
   return (
     <div className="w-100 d-flex justify-content-between justify-content-md-end p-0 m-0 px-2 pe-md-5 pt-4 bg-white sticky-top">
       <OffCanvasSidebar />

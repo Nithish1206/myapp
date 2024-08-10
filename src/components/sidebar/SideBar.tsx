@@ -1,17 +1,17 @@
 import React from "react";
-import logo from "../../assests/frame1_logo.png";
 import "../../css/Sidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { handleLogout } from "../logout/Logout";
 import { sidebarItems } from "../../constant/constant";
 
-const SideBar = () => {
+const SideBar:React.FC = () => {
+  const logo=require("../../assests/frame1_logo.png")
   const navigate = useNavigate();
-  const activeIndex = parseInt(sessionStorage.getItem("activeIndex")) || 0;
+  const activeIndex:number= parseInt(sessionStorage.getItem("activeIndex") || '0')
 
-  const handleItemClick = (index) => {
-    sessionStorage.setItem("activeIndex", index);
+  const handleItemClick = (index:number) => {
+    sessionStorage.setItem("activeIndex", index.toString());
   };
 
   return (

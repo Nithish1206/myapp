@@ -3,10 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { Formik, Form, Field } from "formik";
-import { listValidation } from "../../utils/Validation";
+import { listSchema } from "../../utils/Validation";
 import { useAddProductMutation } from "../service/apiSlice";
 
-const AddProviders = () => {
+interface value{
+    title: string;
+    price: string;
+    images: string[];
+    description: string;
+    categoryId: number;
+}
+
+const AddProviders:React.FC = () => {
   const navigate = useNavigate();
   const [addProduct, { isLoading }] = useAddProductMutation();
 
@@ -14,7 +22,7 @@ const AddProviders = () => {
     navigate("/Providers");
   };
 
-  const handleSave = async (values) => {
+  const handleSave = async (values:value) => {
     await addProduct(values);
     const Toast = Swal.mixin({
       toast: true,
@@ -48,7 +56,7 @@ const AddProviders = () => {
               description: "",
               categoryId: 1,
             }}
-            validationSchema={listValidation}
+            validationSchema={listSchema}
             onSubmit={(values) => {
               handleSave(values);
             }}>

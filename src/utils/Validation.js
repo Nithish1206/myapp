@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-export const listValidation = Yup.object().shape({
+export const listSchema = Yup.object().shape({
   title: Yup.string().min(1, "Too Short!").max(50, "Too Long!").required("*Title is required"),
   price: Yup.number()
     .test("no-e", "Number cannot contain e", (value) => !value.toString().includes("e"))
@@ -10,7 +10,7 @@ export const listValidation = Yup.object().shape({
   description: Yup.string().min(1, "Too Short!").required("*Description is required"),
 });
 
-export const formValidation = Yup.object().shape({
+export const formSchema = Yup.object().shape({
   email: Yup.string().email("Email is invalid").required("*Email is required"),
   password: Yup.string().required("*Password is required"),
   // .min(8, "Password must be at least 8 characters")

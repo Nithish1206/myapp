@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const HandledeleteProvider = (id, deleteProduct) => {
+const HandledeleteProvider = (id:number, deleteProduct:React.Dispatch<number>) => {
   Swal.fire({
     title: "Are you sure?",
     text: "You want to Delete this!",

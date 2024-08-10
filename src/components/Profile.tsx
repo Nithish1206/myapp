@@ -1,20 +1,28 @@
 import React, { useState } from "react";
 import "../css/Profile.css";
 import { Row, Col } from "react-bootstrap";
-import profilePic from "../assests/doc.jpg";
 
-const Profile = ({ User, setUser, details, setDetails }) => {
+interface Props{ 
+  User: string[];
+  setUser:React.Dispatch<string[]>;
+  details: { label: string; type: string; value: string; }[];
+  setDetails:  React.Dispatch<{ label: string; type: string; value: string }[]>; 
+}
+
+const Profile = ({ User, setUser, details, setDetails }: Props) => {
+  const profilePic=require("../assests/doc.jpg")
   const [edit, setEdit] = useState(true);
+  
 
   ///Handle Status
   const [status, setStatus] = useState("Active");
-  const handleStatus = (e) => {
+  const handleStatus = (e: { target: { value: React.SetStateAction<string> } }) => {
     setStatus(e.target.value);
   };
 
   ////inputFeild
-  const inputFeild = (datas) => {
-    const outlist = datas.map((data, index) => (
+  const inputFeild = () => {
+    const outlist = details.map((data, index) => (
       <Col lg={4} key={index} className="p-0 m-0">
         <div className="m-auto pe-3 pb-3">
           <label className="d-flex py-2 fw-semibold">{data.label}</label>
@@ -32,7 +40,7 @@ const Profile = ({ User, setUser, details, setDetails }) => {
   };
 
   ///Handle Change
-  const handleChange = (Currentvalues, index) => {
+  const handleChange = (Currentvalues:string, index: number) => {
     const updateValue = [...details];
     updateValue[index].value = Currentvalues;
     setDetails(updateValue);
@@ -79,7 +87,7 @@ const Profile = ({ User, setUser, details, setDetails }) => {
           </div>
         </Row>
         <Row className="m-0 p-0 d-flex justify-content-start mt-3 ">
-          {inputFeild(details)}
+          {inputFeild()}
           <Col lg={4} className="p-0 m-0 d-flex align-items-end">
             <div className="pe-3 pb-3">
               <label htmlFor="status" className="d-block fw-semibold py-2">

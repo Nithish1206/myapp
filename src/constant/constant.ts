@@ -1,6 +1,6 @@
-import PE from "../assests/Frame 20.png";
-import PIT from "../assests/Frame 22.png";
-import RP from "../assests/Frame 21.png";
+const PE = require("../assests/Frame 20.png");
+const PIT = require("../assests/Frame 22.png");
+const RP=require("../assests/Frame 21.png");
 
 export const profileData = [
   { label: "First Name", value: "Jessica", type: "text" },

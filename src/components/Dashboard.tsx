@@ -3,14 +3,9 @@ import '../css/Dashboard.css';
 import { Row, Col } from 'react-bootstrap';
 import { boxContent } from '../constant/constant';
 
-interface BoxContent {
-  title: string;
-  count: number;
-  img: string;
-}
 
 const Dashboard: React.FC = () => {
-  const Box = (boxContent: BoxContent[]) => {
+  const Box = () => {
     return boxContent.map((input, index) => (
       <Col md={12} lg={3} className="m-0 p-0" key={index}>
         <div className="boxcss d-flex justify-content-between align-items-center rounded-4 p-3">
@@ -31,7 +26,7 @@ const Dashboard: React.FC = () => {
       <Row className="w-100">
         <h2 className="w-100">Dashboard</h2>
       </Row>
-      <Row className="gap-5 mt-4 w-100">{Box(boxContent)}</Row>
+      <Row className="gap-5 mt-4 w-100">{Box()}</Row>
     </div>
   );
 };
