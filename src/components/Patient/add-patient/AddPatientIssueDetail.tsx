@@ -23,7 +23,7 @@ const PatientIssueDetail = () => {
       Score: "5/10",
     };
     localStorage.setItem("PatientData", JSON.stringify([...existData, List]));
-    sessionStorage.setItem("AddDetails", JSON.stringify());
+    sessionStorage.setItem("AddDetails", JSON.stringify(""));
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",

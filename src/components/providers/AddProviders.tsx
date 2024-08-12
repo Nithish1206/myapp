@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { Formik, Form, Field } from "formik";
 import { useAddProductMutation } from "../service/apiSlice";
@@ -44,7 +44,7 @@ const AddProviders: React.FC = () => {
           <h4 className="text-secondary">Providers</h4>
         </Link>
         <span className="iconamoon--arrow-right-2"></span>
-        <h4 className="text-color-blue">Add Providers</h4>
+        <h4 className="text-color-blue">Add Provider</h4>
       </div>
       <Row className="mt-5 m-0 p-0 d-flex justify-content-center">
         <Col lg={6} className="rounded-4 p-5 shadow-lg">
@@ -90,7 +90,13 @@ const AddProviders: React.FC = () => {
                     Cancel
                   </div>
                   <button type="submit" className="border-0 rounded text-white p-2 mt-2 submit-btn" disabled={isLoading}>
-                    {isLoading ? "Adding..." : "Submit"}
+                    {isLoading ? (
+                      <>
+                        <Spinner animation="border" size="sm" /> Adding
+                      </>
+                    ) : (
+                      "Submit"
+                    )}
                   </button>
                 </div>
               </Form>

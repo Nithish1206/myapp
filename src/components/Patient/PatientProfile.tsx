@@ -8,7 +8,7 @@ const PatientProfile = () => {
   const pic = require("../../assests/doc.jpg");
   const { id } = useParams();
   const AllPerson = JSON.parse(localStorage.getItem("PatientData") || "[]");
-  const person = AllPerson.find((al: { Id: string }) => al.Id === id);
+  const person = AllPerson.find((al: { Id: number }) => al.Id === Number(id));
 
   return (
     <div className="m-5">

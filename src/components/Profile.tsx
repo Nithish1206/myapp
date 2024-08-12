@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import "../css/Profile.css";
 import { Row, Col } from "react-bootstrap";
 
-interface Props{ 
+interface Props {
   User: string[];
-  setUser:React.Dispatch<string[]>;
-  details: { label: string; type: string; value: string; }[];
-  setDetails:  React.Dispatch<{ label: string; type: string; value: string }[]>; 
+  setUser: React.Dispatch<string[]>;
+  details: { label: string; type: string; value: string }[];
+  setDetails: React.Dispatch<{ label: string; type: string; value: string }[]>;
 }
 
 const Profile = ({ User, setUser, details, setDetails }: Props) => {
-  const profilePic=require("../assests/doc.jpg")
+  const profilePic = require("../assests/doc.jpg");
   const [edit, setEdit] = useState(true);
-  
 
   ///Handle Status
   const [status, setStatus] = useState("Active");
@@ -40,7 +39,7 @@ const Profile = ({ User, setUser, details, setDetails }: Props) => {
   };
 
   ///Handle Change
-  const handleChange = (Currentvalues:string, index: number) => {
+  const handleChange = (Currentvalues: string, index: number) => {
     const updateValue = [...details];
     updateValue[index].value = Currentvalues;
     setDetails(updateValue);

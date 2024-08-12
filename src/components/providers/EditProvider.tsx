@@ -90,7 +90,13 @@ const EditProviders: React.FC = () => {
                         Cancel
                       </div>
                       <button type="submit" className="border-0 rounded text-white p-2 mt-2 submit-btn" disabled={updateLoading}>
-                        {updateLoading ? "Updating..." : "Submit"}
+                        {updateLoading ? (
+                          <>
+                            <Spinner animation="border" size="sm" /> Updating
+                          </>
+                        ) : (
+                          "Submit"
+                        )}
                       </button>
                     </div>
                   </Form>
