@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import { useState } from "react";
 
-const EditPatientDemographic = ({ setShow, person }) => {
-  const [details, setDetails] = useState([
+interface Detail {
+  label: string;
+  Placeholder: string;
+  value: string;
+  type: string;
+}
+
+interface Person {
+  FirstName: string;
+  LastName: string;
+  Email: string;
+  Phone: string;
+  Period: string;
+  OnboardDate: string;
+}
+
+interface Props {
+  setShow: (value: string) => void;
+  person: Person;
+}
+
+const EditPatientDemographic: React.FC<Props> = ({ setShow, person }) => {
+  const [details, setDetails] = useState<Detail[]>([
     { label: "First Name", Placeholder: "Enter first Name", value: person.FirstName, type: "text" },
     { label: "Last Name", Placeholder: "Enter last Name", value: person.LastName, type: "text" },
     { label: "Email Address", Placeholder: "Enter email address", value: person.Email, type: "email" },
@@ -12,31 +32,30 @@ const EditPatientDemographic = ({ setShow, person }) => {
     { label: "Consumption Period", Placeholder: "Enter Consumption Period", value: person.Period, type: "text" },
     { label: "Onboard Date", Placeholder: "Enter onboard date", value: person.OnboardDate, type: "date" },
     { label: "Training", Placeholder: "Select training", value: "Enrolled", type: "text" },
-    { label: "Assigned To", placeholder: "Assigned to", value: "Bruce", type: "text" },
+    { label: "Assigned To", Placeholder: "Assigned to", value: "Bruce", type: "text" },
   ]);
 
-  const AddPatientDetails = (details) => {
-    const List = details.map((detail, index) => (
+  const AddPatientDetails = () => {
+    return details.map((detail, index) => (
       <Col lg={4} key={index} className="mb-5">
         <div>
-          <label htmlFor={index} className="pb-2">
+          <label htmlFor={index.toString()} className="pb-2">
             {detail.label}
           </label>
           <input
             type={detail.type}
             className="form-control shadow-none"
             value={detail.value}
-            id={index}
+            id={index.toString()}
             placeholder={detail.Placeholder}
             onChange={(e) => handleChange(e.target.value, index)}
           />
         </div>
       </Col>
     ));
-    return List;
   };
 
-  const handleChange = (value, index) => {
+  const handleChange = (value: string, index: number) => {
     const list = [...details];
     list[index].value = value;
     setDetails(list);
@@ -49,10 +68,10 @@ const EditPatientDemographic = ({ setShow, person }) => {
 
   return (
     <Row className="mt-5 border border-1 rounded p-4 d-flex">
-      {AddPatientDetails(details)}
+      {AddPatientDetails()}
       <Col className="d-flex justify-content-end gap-4">
         <button className="border-0 p-2 px-3 rounded cancelbtn fw-semibold text-secondary">Cancel</button>
-        <button className="border-0 p-2 px-4 rounded nextbtn fw-semibold text-white" onClick={() => EditDetail()}>
+        <button className="border-0 p-2 px-4 rounded nextbtn fw-semibold text-white" onClick={EditDetail}>
           Next
         </button>
       </Col>

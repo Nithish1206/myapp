@@ -44,7 +44,6 @@ export const demographicdetails = [
 ];
 
 export const menuList = [
-  { Login: "/" },
   { Home: "/Home" },
   { Dashboard: "/Dashboard" },
   { "Patient List": "/PatientList" },

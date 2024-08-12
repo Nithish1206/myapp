@@ -5,11 +5,12 @@ import { Spinner } from "react-bootstrap";
 import "../../css/Providers.css";
 import { useGetAllProductsQuery, useDeleteProductMutation } from "../service/apiSlice";
 import { PaginatedItems } from "./Pagination";
+import { Provider } from "./TableRow";
 
 const Providers = () => {
   sessionStorage.setItem("ProfileisActive", "false");
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredProviders, setFilteredProviders] = useState([]);
+  const [filteredProviders, setFilteredProviders] = useState<Provider[]>([]);
 
   const [deleteProduct] = useDeleteProductMutation();
 
@@ -51,8 +52,14 @@ const Providers = () => {
         </div>
       ) : (
         <div>
-          <div className="d-none d-lg-block">
+            <div className="d-none d-md-none d-lg-block">
             <PaginatedItems itemsPerPage={10} filteredProviders={filteredProviders} deleteProduct={deleteProduct} />
+            </div>
+            <div className="d-none d-md-block d-lg-none">
+            <PaginatedItems itemsPerPage={7} filteredProviders={filteredProviders} deleteProduct={deleteProduct} />
+            </div>
+            <div className=" d-block d-md-none d-lg-none">
+            <PaginatedItems itemsPerPage={5} filteredProviders={filteredProviders} deleteProduct={deleteProduct} />
           </div>
         </div>
       )}

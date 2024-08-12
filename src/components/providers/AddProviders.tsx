@@ -3,18 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { Formik, Form, Field } from "formik";
-import { listSchema } from "../../utils/Validation";
 import { useAddProductMutation } from "../service/apiSlice";
+import { listSchema } from "../../utils/Validation";
 
-interface value{
-    title: string;
-    price: string;
-    images: string[];
-    description: string;
-    categoryId: number;
+interface value {
+  title: string;
+  price: string;
+  images: string[];
+  description: string;
+  categoryId: number;
 }
 
-const AddProviders:React.FC = () => {
+const AddProviders: React.FC = () => {
   const navigate = useNavigate();
   const [addProduct, { isLoading }] = useAddProductMutation();
 
@@ -22,7 +22,7 @@ const AddProviders:React.FC = () => {
     navigate("/Providers");
   };
 
-  const handleSave = async (values:value) => {
+  const handleSave = async (values: value) => {
     await addProduct(values);
     const Toast = Swal.mixin({
       toast: true,
@@ -47,7 +47,7 @@ const AddProviders:React.FC = () => {
         <h4 className="text-color-blue">Add Providers</h4>
       </div>
       <Row className="mt-5 m-0 p-0 d-flex justify-content-center">
-        <Col lg={5} className="rounded-4 p-5 shadow-lg">
+        <Col lg={6} className="rounded-4 p-5 shadow-lg">
           <Formik
             initialValues={{
               title: "",
@@ -89,7 +89,7 @@ const AddProviders:React.FC = () => {
                   <div className="rounded p-2 text-center on-hover cancel-btn mt-2" onClick={() => handleCancel()}>
                     Cancel
                   </div>
-                  <button type="submit" className="border-0 rounded text-white p-2 mt-2 submit-btn">
+                  <button type="submit" className="border-0 rounded text-white p-2 mt-2 submit-btn" disabled={isLoading}>
                     {isLoading ? "Adding..." : "Submit"}
                   </button>
                 </div>

@@ -1,14 +1,14 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import pic from "../../assests/doc.jpg";
 import "../../css/PatientProfile.css";
 import PatientProfileDetails from "./PatientProfileDetails";
 
 const PatientProfile = () => {
+  const pic = require("../../assests/doc.jpg");
   const { id } = useParams();
-  const AllPerson = JSON.parse(localStorage.getItem("PatientData"));
-  const person = AllPerson.find((al) => al.Id === parseInt(id));
+  const AllPerson = JSON.parse(localStorage.getItem("PatientData") || "[]");
+  const person = AllPerson.find((al: { Id: string }) => al.Id === id);
 
   return (
     <div className="m-5">

@@ -1,15 +1,16 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
 import HandledeleteProvider from "./HandledeleteProvider";
+import React from "react";
 
-interface Props{
-  currentItems: [{id:number,title:string,price:number,updatedAt:Date}];
-  navigate: React.Dispatch<string>;
-  itemOffset: React.Dispatch<number>;
-  deleteProduct: React.Dispatch<number>;
+export interface Provider {
+  id: number;
+  title: string;
+  price: number;
+  updatedAt: string;
 }
 
-export const TableRow:React.FC<Props> = ( currentItems, navigate, itemOffset, deleteProduct )=>
+export const TableRow = (currentItems: Provider[], navigate: React.Dispatch<string>, itemOffset: number, deleteProduct: React.Dispatch<number>) =>
   currentItems.map((provide) => (
     <tr key={provide.id}>
       <td>{++itemOffset}</td>
@@ -25,7 +26,7 @@ export const TableRow:React.FC<Props> = ( currentItems, navigate, itemOffset, de
       <td>{moment.utc(provide.updatedAt).local().format("DD-MM-YYYY, HH:MM A ")}</td>
 
       <td className=" Action text-nowrap z-0">
-        <Link to={`/Providers/EditProviders/${provide.id}`} className="bxs--edit outline-none me-2  bg-transparent"></Link>
+        <Link to={`/Providers/EditProvider/${provide.id}`} className="bxs--edit outline-none me-2  bg-transparent"></Link>
         <button
           className="material-symbols--delete-outline border-0 outline-none ms-2 bg-transparent"
           onClick={() => {

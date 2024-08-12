@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const HandledeleteProvider = (id:number, deleteProduct:React.Dispatch<number>) => {
+const HandledeleteProvider = (id: number, deleteProduct: React.Dispatch<number>) => {
   Swal.fire({
     title: "Are you sure?",
     text: "You want to Delete this!",
@@ -13,7 +13,7 @@ const HandledeleteProvider = (id:number, deleteProduct:React.Dispatch<number>) =
     if (result.isConfirmed) {
       Swal.fire({
         title: "Deleted!",
-        text: "Your file has been deleted.",
+        text: "Product has been deleted.",
         icon: "success",
       });
       deleteProduct(id);

@@ -1,24 +1,24 @@
 import ReactPaginate from "react-paginate";
-import { TableRow } from "./TableRow";
+import { Provider, TableRow } from "./TableRow";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import React from "react";
 
-interface Props{
+interface Props {
   itemsPerPage: number;
-  filteredProviders: string[];
-  deleteProduct:React.Dispatch<number>
+  filteredProviders: Provider[];
+  deleteProduct: (id: number) => void;
 }
-
-export const PaginatedItems = ({ itemsPerPage, filteredProviders, deleteProduct }:Props) => {
+export const PaginatedItems = ({ itemsPerPage, filteredProviders, deleteProduct }: Props) => {
   const navigate = useNavigate();
-  const currentPage = parseInt(sessionStorage.getItem("currentPage")||'0');
+  const currentPage = parseInt(sessionStorage.getItem("currentPage") || "0");
 
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = filteredProviders.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(filteredProviders.length / itemsPerPage);
 
-  const handlePageClick = (event: { selected: number; }) => {
+  const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % filteredProviders.length;
     setItemOffset(newOffset);
     sessionStorage.setItem("currentPage", event.selected.toString());
@@ -55,11 +55,11 @@ export const PaginatedItems = ({ itemsPerPage, filteredProviders, deleteProduct 
             breakLinkClassName="text-decoration-none text-dark break-select"
             nextLabel="next >"
             onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
+            pageRangeDisplayed={3}
             pageCount={pageCount}
             previousLabel="< previous"
             renderOnZeroPageCount={null}
-            className="d-flex justify-content-center align-items-center  mt-5 gap-3"
+            className="d-flex justify-content-center align-items-center  mt-5 gap-3 p-0"
             previousClassName=" list-group"
             pageClassName="list-group d-none d-md-block"
             nextClassName="list-group"

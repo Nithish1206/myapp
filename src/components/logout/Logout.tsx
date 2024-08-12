@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-export const handleLogout = (navigate) => {
+export const handleLogout = (navigate:React.Dispatch<string>) => {
   Swal.fire({
     title: "Are you sure?",
     text: "You want to Logout",

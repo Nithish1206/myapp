@@ -2,11 +2,7 @@ import * as Yup from "yup";
 
 export const listSchema = Yup.object().shape({
   title: Yup.string().min(1, "Too Short!").max(50, "Too Long!").required("*Title is required"),
-  price: Yup.number()
-    .test("no-e", "Number cannot contain e", (value) => !value.toString().includes("e"))
-    .required("*Price is required")
-    .positive()
-    .integer(),
+  price: Yup.number().required("*Price is required").positive().integer(),
   description: Yup.string().min(1, "Too Short!").required("*Description is required"),
 });
 

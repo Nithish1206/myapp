@@ -2,12 +2,12 @@ import { Formik, Form, Field } from "formik";
 import React from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Row, Col, Spinner } from "react-bootstrap";
-import { listSchema } from "../../utils/Validation";
 import { useGetProductQuery, useEditProductMutation } from "../service/apiSlice";
+import { listSchema } from "../../utils/Validation";
 
 // Define the type for your form values
 interface FormValues {
-  id: string;
+  id?: string;
   title: string;
   price: number;
   description: string;
@@ -18,8 +18,8 @@ const EditProviders: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
 
-  const { data: providers, isLoading} = useGetProductQuery(id);
-  const [editProduct, { isLoading: fetching }] = useEditProductMutation();
+  const { data: providers, isLoading } = useGetProductQuery(id);
+  const [editProduct, { isLoading: updateLoading }] = useEditProductMutation();
 
   // Handle cancel action
   const handleCancel = () => {
@@ -53,58 +53,44 @@ const EditProviders: React.FC = () => {
       ) : (
         <div className="m-3 m-md-5">
           <Row className="mt-5 m-0 p-0 d-flex justify-content-center">
-            <Col lg={5} className="rounded-4 p-5 shadow-lg">
+            <Col lg={6} className="rounded-4 p-5 shadow-lg">
               <Formik
                 initialValues={{
-                  id: id || '',
-                  title: providers?.title || '',
-                  price: providers?.price || 0,
-                  description: providers?.description || '',
+                  id: id,
+                  title: providers.title,
+                  price: providers.price,
+                  description: providers.description,
                 }}
                 validationSchema={listSchema}
                 onSubmit={async (values: FormValues) => {
-              
-                    await editProduct(values);
-                    navigate("/Providers");
-                 
-                }}
-              >
+                  await editProduct(values);
+                  navigate("/Providers");
+                }}>
                 {({ errors, touched }) => (
                   <Form className="vstack gap-2">
                     <label htmlFor="title" className="fw-semibold">
                       Title<span className="Asterisk">*</span>
                     </label>
                     <Field name="title" placeholder="Enter title" className="rounded border border-1 p-2" />
-                    {errors.title && touched.title ? (
-                      <div className="text-danger">{errors.title}</div>
-                    ) : null}
+                    {errors.title && touched.title ? <div className="text-danger">{errors.title}</div> : null}
 
                     <label htmlFor="price" className="fw-semibold">
                       Price<span className="Asterisk">*</span>
                     </label>
                     <Field name="price" placeholder="Enter price" type="number" className="rounded border border-1 p-2" />
-                    {errors.price && touched.price ? (
-                      <div className="text-danger">{errors.price}</div>
-                    ) : null}
+                    {errors.price && touched.price ? <div className="text-danger">{errors.price}</div> : null}
 
                     <label htmlFor="description" className="fw-semibold">
                       Description<span className="Asterisk">*</span>
                     </label>
-                    <Field
-                      as="textarea"
-                      name="description"
-                      placeholder="Enter Description"
-                      className="rounded border border-1 p-2 text-area"
-                    />
-                    {errors.description && touched.description ? (
-                      <div className="text-danger">{errors.description}</div>
-                    ) : null}
+                    <Field as="textarea" name="description" placeholder="Enter Description" className="rounded border border-1 p-2 text-area" />
+                    {errors.description && touched.description ? <div className="text-danger">{errors.description}</div> : null}
                     <div className="d-flex justify-content-end gap-3">
                       <div className="rounded p-2 text-center on-hover cancel-btn mt-2" onClick={handleCancel}>
                         Cancel
                       </div>
-                      <button type="submit" className="border-0 rounded text-white p-2 mt-2 submit-btn">
-                        {fetching ? "Updating..." : "Submit"}
+                      <button type="submit" className="border-0 rounded text-white p-2 mt-2 submit-btn" disabled={updateLoading}>
+                        {updateLoading ? "Updating..." : "Submit"}
                       </button>
                     </div>
                   </Form>

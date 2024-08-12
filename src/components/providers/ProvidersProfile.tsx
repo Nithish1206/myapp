@@ -6,18 +6,16 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import { useGetProductQuery, useDeleteProductMutation } from "../service/apiSlice";
 
-
-
 const ViewProviders = () => {
   sessionStorage.setItem("ProfileisActive", "true");
   const navigate = useNavigate();
-  const { id }= useParams();
+  const { id } = useParams();
 
-  const { data: providers, isLoading} = useGetProductQuery(id);
+  const { data: providers, isLoading } = useGetProductQuery(id);
   const [deleteProduct] = useDeleteProductMutation();
 
   ////handleDelete
-  const handleDelete = (id:string | undefined) => {
+  const handleDelete = (id: string | undefined) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You want to Delete this!",
@@ -62,7 +60,7 @@ const ViewProviders = () => {
             </div>
 
             <div className="d-flex  gap-5">
-              {providers.images.map((image:string, index:number) => (
+              {providers.images.map((image: string, index: number) => (
                 <div key={index}>
                   <img src={image} alt="" width={200} className="rounded mt-5" />
                 </div>
@@ -75,7 +73,7 @@ const ViewProviders = () => {
               <p>{providers.description}</p>
             </div>
             <div className="text-end mt-3">
-              <Link to={`/Providers/EditProviders/${id}`}>
+              <Link to={`/Providers/EditProvider/${id}`}>
                 <button className="border-0 px-3 py-1 rounded me-2 text-white submit-btn">Edit</button>
               </Link>
 

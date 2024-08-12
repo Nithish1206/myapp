@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Rebirth from "../../assests/Rebirth_logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import { formSchema } from "../../utils/Validation";
 import { useAuthMutation } from "../service/apiSlice";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
+  const Rebirth = require("../../assests/Rebirth_logo.png");
   const [auth] = useAuthMutation();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(true);
@@ -30,11 +31,23 @@ const LoginForm = () => {
             if (res.data.access_token) {
               sessionStorage.setItem("token", res.data.access_token);
               navigate("/Home");
-            } else {
-              console.log("Server Error");
             }
           } catch (error) {
-            alert("Invalid Login credential");
+            const Toast = Swal.mixin({
+              toast: true,
+              position: "top-end",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+              },
+            });
+            Toast.fire({
+              icon: "error",
+              title: "Invalid Credential",
+            });
           }
         }}>
         {({ errors, touched }) => (
@@ -72,7 +85,9 @@ const LoginForm = () => {
             <div>
               <Field type="checkBox" id="checkBox" className="mx-1 on-hover" />
               <label htmlFor="checkBox">Remember me</label>
-              <Link className="float-end text-decoration-none FP">Forgot Password ?</Link>
+              <Link className="float-end text-decoration-none FP" to={""}>
+                Forgot Password ?
+              </Link>
             </div>
 
             <button type="submit" className="border-0 rounded p-2 loginBtn">

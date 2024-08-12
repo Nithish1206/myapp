@@ -1,7 +1,11 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 
-const PatientProfileDetails = ({ person }) => {
+interface Props {
+  person: { [key: string]: string };
+}
+
+const PatientProfileDetails: React.FC<Props> = ({ person }) => {
   const handledetails = () => {
     return Object.entries(person).map(([key, value]) => (
       <Col md={6} lg={3} key={key} className="mb-4">
@@ -10,6 +14,7 @@ const PatientProfileDetails = ({ person }) => {
       </Col>
     ));
   };
+
   return (
     <div>
       <Row className="mt-4">

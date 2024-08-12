@@ -1,42 +1,43 @@
-import React from "react";
+import React from 'react';
 import "../../css/PatientList.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import Swal from "sweetalert2";
-// import { useSelector } from "react-redux";
 
-const PatientList = () => {
+interface Patient {
+  Id: number;
+  [key: string]: any;
+}
+
+const PatientList:React.FC = () => {
   const navigate = useNavigate();
-  const patient = JSON.parse(localStorage.getItem("PatientData"));
-  // const patient = useSelector((state) => state.patient);
+  const patient: Patient[] = JSON.parse(localStorage.getItem("PatientData") || '[]');
 
   const PatientDetails = () => {
-    const List = patient.map((list, index) => (
+    return patient.map((list, index) => (
       <tr key={index}>
         {Object.entries(list).map(([key, value]) => (
           <td className="on-hover" key={key} onClick={() => handleClick(list.Id)}>
             {value}
           </td>
         ))}
-
-        <td className=" Action text-center text-nowrap">
+        <td className="Action text-center text-nowrap">
           <button className="bxs--edit border-0 outline-none me-1" onClick={() => handleEdit(list.Id)}></button>
           <button className="material-symbols--delete-outline border-0 outline-none ms-1" onClick={() => handleDelete(list.Id)}></button>
         </td>
       </tr>
     ));
-    return List;
   };
-  ///handleClick
-  const handleClick = (id) => {
+
+  const handleClick = (id: number) => {
     navigate(`/PatientList/PatientProfile/${id}`);
   };
-  ///handleEdit
-  const handleEdit = (id) => {
+
+  const handleEdit = (id: number) => {
     navigate(`/PatientList/EditProfile/${id}`);
   };
-  ///handleDelete
-  const handleDelete = (id) => {
+
+  const handleDelete = (id: number) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You want to Delete this!",
@@ -52,7 +53,6 @@ const PatientList = () => {
           text: "Your file has been deleted.",
           icon: "success",
         });
-
         const temp = patient.filter((list) => list.Id !== id);
         localStorage.setItem("PatientData", JSON.stringify(temp));
         navigate("/PatientList");
@@ -69,7 +69,6 @@ const PatientList = () => {
             <Icon icon="ion:search" width="1.5rem" height="1.5rem" className="search-icon" />
             <input type="search" placeholder="Search" className="d-flex border-0 search-input ps-2 w-auto flex-fill" />
           </div>
-
           <Link to="/PatientList/AddPatient" className="m-0 p-2">
             <Icon icon="mingcute:add-fill" width="2.3rem" height="2.3rem" className="plus-icon p-1 rounded p-2" />
           </Link>

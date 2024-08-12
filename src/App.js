@@ -17,7 +17,7 @@ import Home from "./components/Home.tsx";
 import Providers from "./components/providers/Providers";
 import AddProviders from "./components/providers/AddProviders";
 import ProvidersProfile from "./components/providers/ProvidersProfile";
-import EditProviders from "./components/providers/EditProviders";
+import EditProviders from "./components/providers/EditProvider";
 import { PrivateLogin, PrivateRouter } from "./components/private-router/PrivateRouter";
 import { profileData } from "./constant/constant";
 
@@ -47,7 +47,7 @@ const AppRouter = () => {
         <SideBar />
       </Col>
 
-      <Col className="p-0 m-0">
+      <Col className="p-0 m-0 flex-fill overflow-y-auto">
         <Navigation name={User[0]} />
         <Routes>
           <Route path="/Home" element={<Home />} />
@@ -61,7 +61,7 @@ const AppRouter = () => {
             <Route path="/Providers" element={<Providers />} />
             <Route path="/Providers/AddProviders" element={<AddProviders />} />
             <Route path="/Providers/ProviderProfile/:id" element={<ProvidersProfile />} />
-            <Route path="/Providers/EditProviders/:id" element={<EditProviders />} />
+            <Route path="/Providers/EditProvider/:id" element={<EditProviders />} />
           </Route>
         </Routes>
       </Col>

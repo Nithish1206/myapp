@@ -4,8 +4,9 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link, useNavigate } from "react-router-dom";
 import { handleLogout } from "../logout/Logout";
 import { menuList } from "../../constant/constant";
+import React from "react";
 
-const OffCanvasSidebar:React.FC=()=>{
+const OffCanvasSidebar: React.FC = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleLogouttemp = () => {
@@ -17,7 +18,7 @@ const OffCanvasSidebar:React.FC=()=>{
     const list = menuList.map((menu) =>
       Object.entries(menu).map(([key, value]) => (
         <li className="list-group-item" key={key}>
-          <Link to={value} className="text-dark text-decoration-none">
+          <Link to={value} className="text-dark text-decoration-none" onClick={() => setShow(false)}>
             {key}
           </Link>
         </li>
@@ -46,6 +47,6 @@ const OffCanvasSidebar:React.FC=()=>{
       </Offcanvas>
     </div>
   );
-}
+};
 
 export default OffCanvasSidebar;

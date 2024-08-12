@@ -8,6 +8,6 @@ export const PrivateRouter = () => {
 
 export const PrivateLogin = () => {
   const isAuth = sessionStorage.getItem("token");
-  sessionStorage.setItem("activeIndex", 0);
+  sessionStorage.setItem("activeIndex", "0");
   return isAuth ? <Navigate to="/Home" /> : <Outlet />;
 };

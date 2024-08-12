@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { useState } from "react";
 import EditPatientDemographic from "./EditPatientDemographic";
-import EditPatientIssue from "./EditPatientIssue";
 import { useParams } from "react-router-dom";
+import EditPatientIssue from "./EditPatientIssue";
 
 const AddPatient = () => {
-  const { id } = useParams();
-  const AllPerson = JSON.parse(localStorage.getItem("PatientData"));
-  const person = AllPerson.find((al) => al.Id === parseInt(id));
+  const { id } = useParams<string>();
+  const AllPerson = JSON.parse(localStorage.getItem("PatientData") || "");
+  const person = AllPerson.find((al: { Id: string | undefined }) => al.Id === id);
 
   const [showComponent, setShowComponent] = useState("A");
   return (

@@ -1,16 +1,16 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const EditPatientIssue = () => {
+const PatientIssueDetail = () => {
   const navigate = useNavigate();
-  const details = JSON.parse(sessionStorage.getItem("AddDetail"));
-  const existData = JSON.parse(localStorage.getItem("PatientData"));
-  const { id } = useParams();
-
-  const EditpatientList = () => {
+  const details = JSON.parse(sessionStorage.getItem("AddDetail") || "");
+  const existData = JSON.parse(localStorage.getItem("PatientData") || "");
+  const length = existData.length;
+  const setpatientList = () => {
     const List = {
-      Id: parseInt(id),
+      Id: existData[length - 1].Id + 1,
       FirstName: details[0].value,
       LastName: details[1].value,
       Email: details[2].value,
@@ -22,9 +22,22 @@ const EditPatientIssue = () => {
       AssignedTo: details[8].value,
       Score: "5/10",
     };
-    const temp = existData.map((ED, index) => (ED.Id === parseInt(id) ? (ED[index] = List) : ED));
-    localStorage.setItem("PatientData", JSON.stringify(temp));
-
+    localStorage.setItem("PatientData", JSON.stringify([...existData, List]));
+    sessionStorage.setItem("AddDetails", JSON.stringify());
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Added successfully",
+    });
     navigate("/PatientList");
   };
   return (
@@ -36,9 +49,9 @@ const EditPatientIssue = () => {
           <button
             className="border-0 p-2 px-4 rounded nextbtn fw-semibold text-white"
             onClick={() => {
-              EditpatientList();
+              setpatientList();
             }}>
-            Save
+            Add
           </button>
         </Col>
       </Row>
@@ -46,4 +59,4 @@ const EditPatientIssue = () => {
   );
 };
 
-export default EditPatientIssue;
+export default PatientIssueDetail;
