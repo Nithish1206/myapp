@@ -61,7 +61,7 @@ const AppRouter = () => {
             <Route path="/Providers" element={<Providers />} />
             <Route path="/Providers/AddProviders" element={<AddProviders />} />
             <Route path="/Providers/ProviderProfile/:id" element={<ProvidersProfile />} />
-            <Route path="/Providers/EditProvider/:id" element={<EditProviders />} />
+            <Route path="/Providers/EditProviders/:id" element={<EditProviders />} />
           </Route>
         </Routes>
       </Col>
